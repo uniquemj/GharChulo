@@ -1,0 +1,168 @@
+*{
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    
+  }
+
+  body {
+    margin:0;
+    padding: 0;
+    overflow-x: hidden;
+    
+  }
+
+  /*Navigation Section Start*/
+  .nav-bar{
+    margin-left: 110px;
+    margin-right: 110px;
+    padding:0;
+    margin-top: -6px;
+  }
+  .chulo-logo{
+    font-weight: 600;
+  }
+  /*Logo*/
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    font-size: 22px;  
+  }
+  /*Navigation Section End*/
+
+  /*Wecome Section and Login SectionContianer*/
+  .login-container{
+    display: flex;
+    position: relative;
+    top:30px;
+    margin-left:135px;
+    margin-right: 135px;
+
+  }
+
+  .welcome-section{
+    position: relative;
+    top:65px;
+    margin-right:90px; 
+  }
+
+    /*Welcome Header*/
+  .welcome-header h1{
+    font-size: 36.949px;
+    font-weight: 600;
+    margin:0;
+
+  }
+
+    /*sub-header*/
+  .welcome-header p{
+    color: #787777;
+    font-size: 15px;
+    font-weight: 400;
+   
+  }
+
+    /*Login options*/
+  .options{
+    display: flex;
+    gap:2rem;
+    margin-top:25px;
+    /* border: 1px solid black; */
+  }
+  
+ /*Customer Option*/
+  .customer-op{
+    display: flex;
+    padding: 24px 28px;
+    flex-direction: column;
+    align-items: center;
+    width: 142px;
+    height: 129px;
+    border-radius: 19.844px;
+    border: 2.273px solid  #E83143;
+    text-decoration: none;
+     color: #E83143; 
+  }
+
+    /*Customer Heading*/
+  .customer-op h2{
+    /* color: #E83143; */
+    font-family: Poppins;
+    font-size: 19.844px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  
+    /*Customer Option Image*/
+  .customer-op img{
+    width: 38.698px;
+    height: 38.698px;
+  }
+
+    /*Kitchen Option*/
+    .customer-op:hover{
+      text-decoration: underline;
+    }
+
+    /*Login Section*/
+  .login-section{
+    border-left:1px solid #d4cdcd;
+    padding-left:100px;
+
+  }
+
+    /*Login Heading*/
+  .login-section h1{
+    font-size: 31.188px;
+    font-weight: 600;
+  }
+
+    /*lOGIN LABELS*/
+  .login-section form label{
+    font-size: 15.337px;
+    font-weight: 400;
+    
+    
+}
+
+  /*lOGIN INPUT*/
+  .login-section form input{
+    padding: 12px 286px 12px 17.254px;
+    border-radius: 5.751px;
+    border: 0.959px solid #000;
+    margin-top: 8px;
+    margin-bottom:20px;
+    width: 451px;
+  }
+
+    /*LOGIN FORGET PASSWORD*/
+  .login-section .forget{
+    color: #605E5E;
+    font-size: 13.42px;
+    font-weight: 400;
+    text-decoration-line: underline;
+    position: relative;
+    top:-10px;
+    text-align: right;
+    display: block;
+  }
+
+    /*lOGIN BUTTON */
+   #login-btn{  
+    width: 451px;
+    height: 49px;
+    padding: 12.394px 180.209px;
+    border-radius: 5.751px;
+    background: #E83143;
+    border: none;
+    color:white;
+    font-size: 15.337px;
+    font-weight: 600;
+    margin-top:15px;
+  }
+
+
+
