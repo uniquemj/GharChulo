@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class = "container mt-5">
+<form method = "POST" class="col-6 mx-auto card p-5 shadow-lg">
+    {% csrf_token %}
+    <h1>Check out</h1>
+    <hr/>
+    <h2>Delivery Address</h2>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Address</label>
+      <input type="text" name = "address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="container mt-5">
+        <h1>Order Summary</h1>
+        <table class="table mt-2 mb-3">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in item%}
+            <tr>
+              <th>{{item.item_name}}</th>
+              <td>Rs. {{item|}}</td>
+              <td>x{{item.quantity}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <h4>Items: {{cartItems}}</h4>
+        <h4>Total: Rs.{{order.get_cart_total}} </h4>
+    <button type="submit" class="btn btn-primary">Pay</button>
+  </form>
+</div>
+
+{% endblock content %}

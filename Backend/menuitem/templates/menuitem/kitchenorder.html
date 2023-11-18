@@ -1,0 +1,73 @@
+{% extends 'main.html' %} {% block content %}
+
+<div class="container d-flex mt-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Order date</th>
+        <th scope="col"></th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Quanity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Address</th>
+        <th scope="col">Order status</th>
+        <th scope="col">Completed</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in order%} 
+        <tr>
+            <td>{{item.date_ordered}}</td>
+            <td>
+            <img
+                src="{{item.item.item_image.url}}"
+                class="card-img-top"
+                alt="..."
+                width="50"
+                height="150"
+            />
+            </td>
+            <th>{{item.item.item_name}}</th>
+            <th>{{item.quantity}}</th>
+            <th>Rs{{item.price}}</th>
+            <th>{{item.address}}</th>
+            <td>
+              {% if not item.is_completed %}
+                <select name = "order_status">
+                    {% if item.order_status == "pending"%}
+                        <option value = "pending" selected>Pending</option>
+                        <option value = "in-making" >In-Making</option>
+                        <option value = "ready">Ready</option>
+                    {% elif item.order_status == "in-making" %}
+                        <option value = "pending">Pending</option>
+                        <option value = "in-making" selected>In-Making</option>
+                        <option value = "ready">Ready</option>
+                    {% elif item.order_status == "ready"%}
+                        <option value = "pending">Pending</option>
+                        <option value = "in-making" >In-Making</option>
+                        <option value = "ready" selected>Ready</option>
+                    {% endif %}
+                </select>
+              {% else %}
+              <span class = "btn btn-success">{{item.order_status|capfirst}}</span>
+              {% endif %}
+            </td>
+            <td>
+
+                {% if item.is_completed%}
+                    <input type="checkbox" name = "is_completed" checked/>
+                {% else %}
+                    <input type="checkbox" name = "is_completed" />
+                {% endif %}
+            </td>
+            <td>
+                <button data-order = "{{item.id}}" data-action = "save" class = "btn btn-primary save-btn">Save</button>
+            </td>
+        </tr>
+        
+      {%endfor%}
+    </tbody>
+  </table>
+</div>
+{% endblock content%}

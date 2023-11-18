@@ -1,0 +1,86 @@
+{% extends 'main.html' %} 
+{% block content%} 
+{% load cart %}
+<div class="container mt-5">
+  {% if request.user.is_customer%}
+  <h1>Customer {{request.session.cart}}loggedin</h1>
+  <div class="container d-flex">
+    {% for kitchen in queryset %} 
+    {% if not kitchen.is_blacklisted %} 
+    {%for item in kitchen.items.all%}
+    <div class="card me-3" style="width: 18rem">
+      <img src="{{item.item_image.url}}" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{item.item_name}}</h5>
+        <p class="card-text">{{item.item_description}}</p>
+        <p class="card-text">Rs. {{item.item_price}}</p>
+        <a href="{% url 'edit-product' item.id%}" class="btn btn-primary"
+          >Explore</a
+        >
+        
+        <button
+          data-product="{{item.id}}"
+          data-action="add"
+          class="btn btn-success update-cart"
+        >
+          Add to cart
+        </button>
+        
+      </div>
+    </div>
+    {%endfor%} 
+    {% endif %} 
+    {% endfor %}
+  </div>
+  {%endif%} 
+  {% if request.user.is_kitchen%}
+  <h1>Kitchen {{request.user.first_name}} logged in</h1>
+  <div class="container d-flex">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Product Image</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Product Price</th>
+          <th scope="col">Product Description</th>
+          <th scope="col">Product Ingredients</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in queryset %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>
+            <img
+              src="{{item.item_image.url}}"
+              class="card-img-top"
+              alt="..."
+              width="150"
+              height="150"
+            />
+          </td>
+          <th>{{item.item_name}}</th>
+          <td>Rs. {{item.item_price}}</td>
+          <td>{{item.item_description}}</td>
+          <td>{{item.item_ingredients}}</td>
+          <td>
+            <a href="{% url 'edit-product' item.id%}" class="btn btn-primary"
+              >Edit</a
+            >
+          </td>
+          <td>
+            <a href="{% url 'delete-product' item.id%}" class="btn btn-danger"
+              >Delete</a
+            >
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {%endif%}
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'main.html' %} {% block content %}
+
+<div class="container d-flex mt-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Order date</th>
+        <th scope="col"></th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Quanity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Order status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in order %} 
+        <tr>
+            <td>{{item.date_ordered}}</td>
+            <td>
+            <img
+                src="{{item.item.item_image.url}}"
+                class="card-img-top"
+                alt="..."
+                width="50"
+                height="150"
+            />
+            </td>
+            <th>{{item.item.item_name}}</th>
+            <th>{{item.quantity}}</th>
+            <th>Rs{{item.price}}</th>
+            {% if item.order_status == "ready"%}
+            <td><span class = "btn btn-success">{{item.order_status}}</span></td>
+            {% elif item.order_status == "in-making"%}
+            <td><span class = "btn btn-warning">{{item.order_status}}</span></td>
+            {% else %}
+            <td><span class = "btn btn-danger">{{item.order_status}}</span></td>
+            {% endif %}
+        </tr>
+        
+      {%endfor%}
+    </tbody>
+  </table>
+</div>
+{% endblock content%}

@@ -1,0 +1,47 @@
+{% extends 'main.html' %} 
+{% block content %}
+{% load cart %}
+<div class="container d-flex justify-content-between mt-5">
+    <h2>Items: {{request.session.cart|get_total_quanity}} </h2>
+    <h2>Total: {{queryset|get_cart_total:request.session.cart}} </h2>
+    <a href = "{% url 'checkout'%}" class = "btn btn-success">Checkout</a>
+</div>
+<div class="container d-flex mt-5">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Product Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in queryset%}
+          <tr>
+            <td>
+              <img
+                src="{{item.item_image.url}}"
+                class="card-img-top"
+                alt="..."
+                width="50"
+                height="150"
+              />
+            </td>
+            <th>{{item.item_name}}</th>
+            <td>Rs. {{item.item_price}}</td>
+            <td class = "d-flex justify-space-evenly">
+              <button data-product = "{{item.id}}" data-action = "add"  class = "btn btn-success update-cart" >+</button>
+              {{item|get_quantity:request.session.cart}}
+              <button data-product = "{{item.id}}" data-action = "remove"  class = "btn btn-success update-cart">-</button>
+            </td>
+            <td>Rs. {{item|get_item_total:request.session.cart}}</td>
+            
+            <td><button data-product = "{{item.id}}" data-action = "delete"  class = "btn btn-danger update-cart">Remove</button></td>
+          </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock content%}
