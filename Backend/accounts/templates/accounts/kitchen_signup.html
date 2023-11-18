@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% block content%}
+<div class = "container mt-5">
+<form method = "POST" class="col-6 mx-auto card p-5 shadow-lg">
+    {% csrf_token %}
+    <h1>SignUp as Kitchen</h1>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-primary" role="alert">
+        {{ message }}
+    </div>
+    {%endfor%}
+    {% endif %}
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Kitchen's Name</label>
+        <input type="text" name = "kitchen_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <h5>Owner's Name</h5>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">First Name</label>
+        <input type="text" name = "first_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Last Name</label>
+        <input type="text" name = "last_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" name = "email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" name = "password" class="form-control" id="exampleInputPassword1">
+    </div>
+    <p>Already have Account? <a href = "{% url 'login-page'%}">Login</a></p>
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>
+</div>
+{% endblock content %}
