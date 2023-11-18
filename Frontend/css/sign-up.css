@@ -1,0 +1,117 @@
+*{
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    
+  }
+
+  body {
+    margin:0;
+    padding: 0;
+    overflow-x: hidden;
+    
+  }
+
+   /*Navigation Section Start*/
+   .nav-bar{
+    margin-left: 110px;
+    margin-right: 110px;
+    padding:0;
+    margin-top: -6px;
+  }
+  .chulo-logo{
+    font-weight: 600;
+  }
+  /*Logo*/
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    font-size: 22px;  
+  }
+  /*Navigation Section End*/
+
+  .container{
+    display:flex;
+    margin-left:115px;
+    margin-right: 135px;
+
+  }
+
+    /*Signup Cover*/
+  .cover-img{
+    padding-right:100px;
+  }
+
+    /*Signup Section*/
+  
+  .signup-section{
+    border-left:1px solid #d4cdcd;
+    position: relative;
+    top:-20px;
+    padding-left:110px;
+    padding-right:10px;
+    
+    
+  }
+  /*Signup Heading*/
+  .signup-section h1{
+    font-size: 32.01px;
+    font-weight: 600;
+    margin-bottom:13px;
+  }
+  
+    /*Sign up Labels*/
+  .signup-section form label{
+    font-size: 13.587px;
+    font-weight: 400;
+  }
+
+    /*Full name Input class*/
+  .signup-section form .name-inputs {
+    display: flex;
+    gap:8.5px;
+    
+  }
+
+    /*Inputs*/
+  .signup-section form input{
+    padding: 8.211px 0 8.211px 10.264px;
+    border-radius: 4.824px;
+    border: 0.883px solid #000;
+    
+    margin-top:5px;
+    margin-bottom:13px;
+  }
+  .input-length{
+    width:368px;
+  }
+
+    /*Signup-button*/
+  #signup-btn{
+    width: 368.468px;
+    height: 41.055px;
+    padding: 11.29px 130.349px;
+    border-radius: 4.819px;
+    background: #E83143;
+    border:none;
+    color:white;
+    font-size: 12.737px;
+    font-weight: 600;
+    margin-top:9px;
+  }
+
+    /*ALREADY ACCOUNT HEADING*/
+  .signup-section h5{
+    font-size: 12.851px;
+    font-weight: 400;
+    position: relative;
+    left:85px;
+  }
+
+  .already-login{
+    color: #E83143;
+   font-size: 12.851px;
+    font-weight: 400;
+  }

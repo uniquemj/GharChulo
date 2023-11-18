@@ -1,0 +1,131 @@
+*{
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    
+  }
+
+  body {
+    margin:0;
+    padding: 0;
+    overflow-x: hidden;
+    
+  }
+
+  /*Navigation Section Start*/
+
+  .nav-bar{
+    margin-left: 110px;
+    margin-right: 110px;
+    padding:0;
+    margin-top: -6px;
+  }
+  .chulo-logo{
+    font-weight: 600;
+  }
+  /*Logo*/
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    font-size: 22px;  
+  }
+  /*Navigation Section End*/
+
+  
+    /*Sigup up and Image Section COntainer*/
+  .container{
+    display:flex;
+    margin-left:115px;
+    margin-right: 135px;
+
+  }
+
+    /*Signup Cover Image*/
+  .cover-img{
+    padding-right:100px;
+    
+  }
+
+    /*Signup Section*/
+  .signup-kitchen-section{
+    border-left:1px solid #e0dada;
+    position: relative;
+    top:-30px;
+    padding-left:110px;
+    padding-right:10px;
+   
+
+  }
+ 
+  .as-customer{
+    font-size:15px;
+    font-weight: 400;
+  }
+ 
+    /*Signup Heading*/
+  .signup-kitchen-section h1{
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom:13px;
+  }
+
+    /*Signup labels*/
+  .signup-kitchen-section form label{
+    font-size: 13.587px;
+    font-weight: 400;
+   
+ 
+  }
+
+    /*full name input section*/
+  .signup-kitchen-section form .name-inputs {
+    display: flex;
+    gap:8.5px;
+
+  }
+
+    /*signup form inputs*/
+  .signup-kitchen-section form input{
+    padding: 8.211px 0 8.211px 10.264px;
+    border-radius: 4.824px;
+    border: 0.883px solid #000;
+    margin-top:3px; 
+    margin-bottom:11px;
+    
+
+  }
+  .input-length{
+    width:368px;
+  }
+
+    /*signup button*/
+  #signup-btn{
+    width: 368.468px;
+    height: 41.055px;
+    padding: 11.29px 130.349px;
+    border-radius: 4.819px;
+    background: #E83143;
+    border:none;
+    color:white;
+    font-size: 12.737px;
+    font-weight: 600;
+    margin-top:9px;
+  }
+
+    /*already acc heading*/
+  .signup-kitchen-section h5{
+    font-size: 12.851px;
+    font-weight: 400;
+    position: relative;
+    left:85px;
+    top:-13px;
+  }
+
+  .already-login{
+    color: #E83143;
+   font-size: 12.851px;
+    font-weight: 400;
+  }
+
