@@ -1,0 +1,445 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  
+}
+
+/*Cover Section Container*/
+.cover-container {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 96px;
+
+
+}
+
+/*Images*/
+.background img {
+  width: 175px;
+  height: 515px;
+}
+
+/*Navigation Items*/
+.land-nav-items {
+  display: flex;
+  gap: 235px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+/*Logo*/
+.land-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  font-size: 21px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.chulo-logo{
+font-weight: 600;
+}
+
+/*Navigation Icons*/
+.land-nav-icons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 18px;
+}
+/*Navigaiton ICons Link STyle*/
+.land-nav-icons a {
+  color: black;
+}
+
+
+/*DROPDOWN USER*/
+.dropbtn{
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+}
+
+.user-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content{
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 210px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a{
+  text-decoration: none;
+  display: block;
+  padding:15px;
+  width:100%;
+  font-size: 15px; 
+ }
+
+ .user-dropdown{
+  font-family: poppins;
+ }
+ 
+
+ /* .hello-msg{
+  display: flex;
+  align-items: center;
+  gap:0.5rem;
+  font-size: 15px;
+  font-weight: 400;
+
+  margin:0px;
+  padding-left:15px;
+ } */
+
+.dropdown-content a:hover{
+  color:#DC2234;
+  background-color: transparent;
+  font-weight: 600;
+}
+
+.notification-dropdown
+ {
+  font-family: poppins;
+
+ }
+
+ .notification-dropdown:hover .notification-content {
+  display: block;
+}
+
+.notification-content{
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 210px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding:0;
+}
+
+.notification-content h3{
+  font-size: 15px;
+  font-weight: 400;
+  background-color:#DC2234;
+  color:white;
+  margin:0;
+  padding:15px;
+}
+
+.notification-content p{
+  font-size:12px;
+  max-width: 180px;
+  padding: 0 0px 5px 15px;
+  
+}
+
+
+/*Main Header Text*/
+.land-header h1 {
+  font-size: 38.258px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  max-width: 403.49px;
+  margin:0;
+  padding: 0;
+
+}
+
+/*Quesiton Header*/
+.land-header h3 {
+  font-family: 'Seaweed Script', cursive;
+  font-size: 36.996px;
+  font-weight: 400;
+  margin-bottom: 0;
+
+}
+
+/*Sub Header Text*/
+.land-header h2 {
+  font-size: 18.498px;
+  font-family: 'Poppins', sans-serif;
+  max-width: 403.49px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+
+
+}
+
+/*LInput SeaRCH Header*/
+.land-header p {
+  color: #000;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: capitalize;
+  margin-bottom: 0;
+  padding: 0;
+  margin-top:20px ;
+}
+
+/*Text Field*/
+.search-bar  form{
+  display: flex;
+  width: 0px;
+  background: #F4F4F4;
+  border-radius: 9.195px;
+  margin-top:9px;
+}
+
+/*Text Field Input Text Style*/
+.search-bar form input {
+  padding-top: 13.459px;
+  padding-left: 19.411px;
+  padding-bottom: 13.459px;
+  padding-right: 130px;
+  height: 48.067px;
+  border-radius: 9.195px 0px 0px 9.195px;
+  color: #707070;
+  font-family: Poppins;
+  font-size: 13.459px;
+  /* border:1px solid black;   */
+  border: none;
+  font-weight: 500;
+  background: #F4F4F4;
+
+}
+
+/*Search Button*/
+.search-button {
+  padding-left: 16.6px;
+  padding-right: 16.6px;
+  border-style: none;
+  background-color: #DC2234;
+  color: white;
+  font-size: 16.63px;
+  font-style: normal;
+  font-weight: 500;
+  border-radius: 0px 7.95px 7.95px 0px;
+}
+
+/* Kitchen Section */
+.kitchens-section {
+  margin-top: 35px;
+  margin-right: 96px;
+  font-family: 'Poppins', sans-serif;
+  margin-left: 96px;
+  margin-right: 96px;
+}
+
+/*Kitchen Section Title/Header*/
+.kitchens-section h1 {
+  font-family: Poppins;
+  font-size: 25.506px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+.border-container{
+  padding:0 10px 10px 10px;
+}
+.kitchen{
+  box-shadow: 0px 3.18819px 8.50185px 0px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+.kitchen:hover{
+  background-color: #f7f7f7;
+}
+
+.kitchen img{
+  width: 271.076px;
+height: 278.884px;
+
+border-radius: 5.911px 5.911px 0 0;
+}
+/*Kitchen-section Subheader*/
+.kitchens-section .sub {
+  font-family: Poppins;
+  font-size: 17.004px;
+  font-weight: 400;
+  margin-top:0;
+  margin-bottom: 25px;
+ 
+}
+
+/*Kitchen-Container Group*/
+.kitchen-container {
+  display: flex;
+  gap:1.5rem;
+  align-items: center;
+  
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+/*Kitchen and Kitchen Description Gropu*/
+
+
+/*Kitchen Name*/
+.name {
+  color: #000;
+  font-family: Poppins;
+  font-size: 16.653px;
+  font-weight: 500;
+
+}
+
+/*Location Name*/
+.location h3 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 11.559px;
+  font-weight: 500;
+}
+
+/*Location and Icon Group*/
+.location {
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+/*Name and Location Group*/
+.name-loc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top:-5px;
+
+}
+
+/*Services and Navigation Arrow*/
+.service-arrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -20px;
+  margin-right: 5px;
+}
+
+/*Kitchen Services*/
+.services p {
+  color: #908787;
+  font-family: Poppins;
+  font-size: 11.559px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 15.893px;
+  /* 137.5% */
+}
+
+/*Navigation Arrow*/
+.arrow a {
+  border: none;
+  padding: 10px;
+  background: none;
+  color: black;
+}
+
+.land-logo a{
+  color:black;
+  text-decoration: none;
+}
+
+/*Footer Section*/
+/*footer-logo*/
+footer{
+  background: #F3F3F3;
+  font-family: poppins;
+}
+
+/*Footer Container*/
+.footer-container{
+  display: flex;
+  padding: 40px 0px 89px 115px;
+  margin-right:0%;
+  gap: 35px;  
+  margin-top: 120px;
+}
+
+/*Logo*/
+.footer-logo  {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 18px;
+  
+}
+
+/*Logo Icon*/
+.footer-logo img{
+  width: 28.916px;
+height: 28.916px;
+  
+}
+
+/*Gharchulo ABout*/
+.about{
+  font-size: 11.41px;
+  font-weight: 400;
+  max-width: 294.835px;
+  margin:0%;
+  
+}
+
+/*Footer Headings*/
+.footer-title{
+  font-size: 15.804px;
+font-weight: 600;
+
+}
+
+.explore {
+  padding-top:3.5px;
+  
+  
+}
+.get-help {
+  padding-top:3.5px;
+}
+.customer-service
+{
+  padding-top:3.5px;
+
+}
+
+/*Footer SubHeadings*/
+.footer-container li{
+  list-style: none;
+  font-size: 12.463px;
+  font-weight: 300;
+  padding-top: 0%;
+  padding-bottom:7px;
+ 
+}
+
+
+.social-icons  {
+font-size: 32px;
+display:flex;
+gap: 1rem;
+margin-top: 9px;
+
+
+}
+/*Footer Section ENd*/
+.social-icons a{
+  color:black;
+}
