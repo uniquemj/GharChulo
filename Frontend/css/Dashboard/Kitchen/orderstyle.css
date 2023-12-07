@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+*,html,body{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+ul li#product{
+    background-color: white;
+    color: black;
+}
+ul li#orders{
+    background-color: rgb(247, 47, 47);
+    color: white;
+    border-radius:20px;
+}
+td select{
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+
+
+}

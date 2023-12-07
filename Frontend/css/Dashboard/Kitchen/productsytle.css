@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+*,html,body{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+ul li#product{
+    background-color: rgb(247, 47, 47);
+    color: white;
+    border-radius:20px;
+}
+
+.myproducts{
+    background-color: rgb(247, 47, 47);
+    flex: 1;
+    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+header{
+    margin: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+button#addproduct{
+    padding: 10px 20px;
+    border: none;
+    background-color:lightgreen;
+}
+
+table{
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
+
+}
+thead{
+    background-color: orange;
+    color: white;
+}
+thead th{
+    position: sticky;
+}
+thead tr th{
+    padding: 20px;
+}
+tbody:before {
+    content:"@";
+    display:block;
+    line-height:10px;
+    text-indent:-99999px;
+}
+
+.tablefixhead {
+    overflow-y: auto; 
+    height: 60vw; 
+}
+.tablefixhead thead th {
+    position: sticky; 
+    top: 0px; 
+    z-index: 1;
+}
+
+th,td {
+    padding: 8px 16px;
+}
+th{
+    background: orange;
+}
+.item{
+    background-color: white;
+    border-bottom: 10px solid rgb(247, 47, 47);
+}
+
+.item .imgcover{
+    background-image: url(../images/momo.jpg);
+    background-size: contain;
+    width: 200px;
+    height: 140px;
+    border-radius: 10px;
+    margin: 10px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+table button{
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+}
+.success{
+    background-color: lightgreen;
+}
+.danger{
+    background-color: red;
+}
+.warning{
+    background-color: orange;
+}
