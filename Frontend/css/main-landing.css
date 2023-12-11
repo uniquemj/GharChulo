@@ -1,0 +1,460 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+
+}
+
+/*Cover Section Container*/
+.cover-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 96px;
+
+
+}
+
+/*Images*/
+.background img {
+    width: 175px;
+    height: 515px;
+}
+
+/*Navigation Items*/
+.land-nav-items {
+    display: flex;
+    gap: 170px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+/*Logo*/
+.land-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    font-size: 21px;
+    font-family: 'Poppins', sans-serif;
+
+
+}
+
+.land-logo a {
+    text-decoration: none;
+    color: black;
+}
+
+.chulo-logo {
+    font-weight: 600;
+}
+
+.login-signup {
+    display: flex;
+    gap: 10px;
+}
+
+.login-btn {
+
+
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    border: none;
+    padding: 6px 17px;
+    background-color: transparent;
+}
+
+.login-btn:hover {
+    border: 0.5px solid black;
+    padding: 6px 17px;
+    border-radius: 8px;
+
+}
+
+.signup-btn {
+    color: white;
+    padding: 6px 17px;
+    border-radius: 8px;
+    background: #DC2234;
+    border: none;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.header-section h3 {
+    font-family: Smooch;
+    font-size: 36.114px;
+    font-weight: 400;
+    margin:40px 0 0 0;
+    padding:0;
+}
+
+.header-section h1 {
+    color: #000;
+    font-family: Poppins;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+    max-width: 490px;
+    margin:0;
+    padding:0;
+}
+
+.header-section h2 {
+    color: #000;
+    font-family: Poppins;
+    font-size: 20px;
+    font-weight: 400;
+    width: 364.106px;
+    margin: 0 0 20px 0;
+    padding:0;
+
+}
+.bold{
+
+font-weight: 700;
+}
+
+.start-btn {
+    padding: 7.809px 18.547px;
+    border-radius: 7.809px;
+    background: #DC2234;
+    color: #FFF;
+    font-family: Poppins;
+    font-size: 15.618px;
+    font-weight: 500;
+    border: none;
+    margin-right: 10px;
+}
+
+.learn-btn {
+    padding: 7.809px 18.547px;
+    border-radius: 7.809px;
+    border: 0.976px solid #000;
+    color: #000;
+    font-family: Poppins;
+    font-size: 15.618px;
+    font-weight: 500;
+    background-color: transparent;
+    margin-left: 10px;
+}
+
+.role-section{
+    display:flex;
+    gap:3rem;
+    margin: 50px 96px 0 96px;
+}
+.join-section{
+    width: 615.026px;
+    height: 287px;
+    border-radius: 21px;
+    background: #ECECEC;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.join-section img{
+    width: 325px;
+height: 258px;
+}
+.register-section img{
+    width: 305.423px;
+height: 249.311px;
+}
+.register-section{
+    width: 615.026px;
+    height: 287px;
+    border-radius: 21px;
+    background:#DC2234;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.join-info h3, .register-info h3{
+    color: #000;
+font-family: Seaweed Script;
+font-size: 26.475px;
+font-weight: 400;
+margin:0;
+padding:0;
+}
+.join-info h1, .register-info h1{
+    width: 243.171px;
+color: #000;
+font-family: Poppins;
+font-size: 23.875px;
+font-weight: 600;
+margin:0;
+padding:0;
+}
+.join-info  h2, .register-info h2{
+    width: 207.839px;
+color: #000;
+font-family: Poppins;
+font-size: 12.481px;
+font-weight: 400;
+margin:0;
+padding:0;
+}
+.register-info h3, .register-info h2, .register-info h1{
+    color:white;
+}
+
+
+.join-btn, .register-btn{
+height: 29.49px;
+padding: 4.245px 40px;
+border-radius: 5.094px;
+font-family: Poppins;
+font-size: 14.019px;
+font-weight: 500;
+border: none;
+margin-top:14px;
+}
+.join-btn{
+    background: #DC2234;
+color: #FFF;
+}
+.register-btn{
+    background: #FFB413;
+color: black;
+}
+.customer-steps{
+    font-family: Poppins;
+    margin-top:90px;
+    margin-left:96px;
+    margin-right:96px;
+    text-align: center;
+
+    
+    
+}
+.customer-steps h4{
+color: #DC2234;
+font-size: 16px;
+font-weight: 600;
+text-transform: uppercase;
+margin:0;
+padding:0;
+}
+.customer-steps h1{
+    color: #000;
+font-size: 32px;
+margin:0;
+padding:0;
+font-weight: 600;
+
+}
+.customer-steps h3{
+    color: #B0A7A7;
+font-size: 16px;
+font-weight: 400;
+margin:0;
+padding:0;
+
+}
+
+
+.browse-order h5, .status h5, .getdelivered h5{
+    color: #BBB;
+text-align: center;
+font-weight: 700;
+text-align: center;
+}
+
+.browse-order h2, .status h2, .getdelivered h2{
+    
+text-align: center;
+    color: #000;
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+
+padding: 0;
+
+}
+.browse-order p, .status p, .getdelivered p{
+color: #575756;
+font-family: Poppins;
+font-size: 16px;
+font-weight: 400;
+margin:0;
+padding: 0;
+text-align: center;
+width:290px;
+display: inline-block;
+}
+
+.browse-order, .status, .getdelivered{
+    text-align: center;
+}
+
+.chef-steps{
+    font-family: Poppins;
+    margin-top:90px;
+    margin-left:96px;
+    margin-right:96px;
+    text-align: center;
+   
+}
+.chef-steps h4{
+color: #DC2234;
+font-size: 16px;
+font-weight: 600;
+text-transform: uppercase;
+margin:0;
+padding:0;
+}
+.chef-steps h1{
+    color: #000;
+font-size: 32px;
+margin:0;
+padding:0;
+font-weight: 600;
+
+}
+.chef-steps h3{
+    color: #B0A7A7;
+font-size: 16px;
+font-weight: 400;
+margin:0;
+padding:0;
+
+}
+button:hover{
+    cursor: pointer;
+}
+.steps{
+    display: flex;
+    justify-content: space-between;
+    align-items:last baseline;
+}
+.register-chef h5, .upload-menu h5, .be-seller h5{
+    color: #BBB;
+text-align: center;
+font-weight: 700;
+text-align: center;
+}
+
+.register-chef h2, .upload-menu h2, .be-seller h2{
+    
+text-align: center;
+    color: #000;
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+padding: 0;
+
+}
+.register-chef p, .upload-menu p, .be-seller p{
+color: #575756;
+font-family: Poppins;
+font-size: 16px;
+font-weight: 400;
+margin:0;
+padding: 0;
+text-align: center;
+width:290px;
+display: inline-block;
+}
+
+.register-chef, .upload-menu, .be-seller{
+    text-align: center;
+}
+/*Footer Section*/
+/*footer-logo*/
+footer{
+    background: #F3F3F3;
+    font-family: poppins;
+  }
+  
+  /*Footer Container*/
+  .footer-container{
+    display: flex;
+    padding: 40px 0px 89px 115px;
+    margin-right:0%;
+    gap: 35px;  
+    margin-top: 120px;
+  }
+  
+  /*Logo*/
+  .footer-logo  {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 18px;
+    
+  }
+  
+  /*Logo Icon*/
+  .footer-logo img{
+    width: 28.916px;
+  height: 28.916px;
+    
+  }
+  
+  /*Gharchulo ABout*/
+  .about{
+    font-size: 11.41px;
+    font-weight: 400;
+    max-width: 294.835px;
+    margin:0%;
+    
+  }
+  
+  /*Footer Headings*/
+  .footer-title{
+    font-size: 15.804px;
+  font-weight: 600;
+  
+  }
+  
+  .explore {
+    padding-top:3.5px;
+    
+    
+  }
+  .get-help {
+    padding-top:3.5px;
+  }
+  .customer-service
+  {
+    padding-top:3.5px;
+  
+  }
+  
+  /*Footer SubHeadings*/
+  .footer-container li{
+    list-style: none;
+    font-size: 12.463px;
+    font-weight: 300;
+    padding-top: 0%;
+    padding-bottom:7px;
+   
+  }
+  
+  
+  .social-icons  {
+  font-size: 32px;
+  display:flex;
+  gap: 1rem;
+  margin-top: 9px;
+  
+  
+  }
+  /*Footer Section ENd*/
+  .social-icons a{
+    color:black;
+  }
