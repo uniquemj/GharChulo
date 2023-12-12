@@ -1,0 +1,32 @@
+
+
+.kitchen-container{
+    border: 2px solid white;
+    height: 100%;
+    padding: 10px 20px;
+    margin: 5px 20px;
+    background-color: white;
+    border-radius: 10px;
+    width: 50%;
+}
+
+.map-section{
+    height: 250px;
+}
+table{
+    gap: 20px;
+}
+td{
+    padding: 20px;
+}
+table{
+    width: 100%;
+}
+tr .value{
+
+    margin-left: auto;
+}
+#save
+{
+   padding:5px 20px;
+}

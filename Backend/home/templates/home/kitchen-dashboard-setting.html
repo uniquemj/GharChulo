@@ -1,0 +1,68 @@
+{% extends 'kitchen-dashboard-main.html'%}
+
+{% block content %}
+<div class="kitchen-container">
+    <h2>Seller Account</h2>
+    <form method="POST" enctype = "multipart/form-data">
+      {% csrf_token %}
+      <table class="tg">
+        <tbody>
+
+          <tr>
+            <td class="name">Owner Name*</td>
+            <td class="value"><input type="text" name = "owned_by" value="{{kitchen.owned_by}}"></td>
+          </tr>
+
+          <tr>
+            <td class="name">Kitchen Name*</td>
+            <td class="value"><input type="text" name = "kitchen_name" value="{{kitchen.kitchen_name}}"></td>
+          </tr>
+          <tr>
+            <td class="name">Email Address*</td>
+            <td class="value"><input type="email" name = "email" value="{{kitchen.user.email}}"></td>
+          </tr>
+
+          <tr>
+            <td class="name">Phone Number*</td>
+            <td class="value"><input type="text" name = "phone_number" value="{{kitchen.phone_number}}"></td>
+          </tr>
+          <tr>
+            <td class="name">Image*</td>
+            <td class="value"><input type="file" name = "image" ></td>
+          </tr>
+          <tr>
+            <td class="name">Service*</td>
+            <td class="value"><input type="text" name = "service" value="{{kitchen.service}}"></td>
+          </tr>
+
+          
+          {% if status%}
+          <tr class = "map-section">
+            <td class="name">Address</td>
+            <td id="map"></td>
+          </tr>
+          {%else%}
+          <tr>
+            <td class = "name">Location</td>
+            <td class = "value">{{kitchen.location}}</td>
+          </tr>
+          <tr>
+            <td class = "name">Latitude</td>
+            <td class = "value">{{kitchen.latitude}}</td>
+          </tr>
+          <tr>
+            <td class = "name">Longitude</td>
+            <td class = "value">{{kitchen.longitude}}</td>
+          </tr>
+
+          {% endif %}
+          
+          <tr>
+            <td class="name"></td>
+            <td class="value"><button id="save">Save</button></td>
+          </tr>
+        </tbody>
+        </table>
+    </form>
+</div>
+{% endblock content %}

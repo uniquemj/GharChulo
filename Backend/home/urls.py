@@ -5,6 +5,9 @@ from .views import *
 
 urlpatterns = [
     path('',home,name = "home"),
+    path('kitchen-dashboard/',kitchendashboard,name = "kitchen-dashboard"),
+    path('kitchen-product/',kitchenDashboardProduct,name = "kitchen-product"),
+    path('kitchen-page/<str:name>/', kitchenPage, name = "kitchenPage"),
 
     # Accounts URL
     path('customer-signup/',CustomerRegistration, name = "customer-signup"),
@@ -24,4 +27,6 @@ urlpatterns = [
     path('order-detail/', OrderDetail, name = "order-detail"),
     path('kitchen-order/', KitchenOrder, name = "kitchen-order"),
     path('update-order/', updateOrder, name = "update-order"),
+
+    path('settings/', kitchenSetting, name = "setting"),
 ]

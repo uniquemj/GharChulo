@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Seaweed+Script&display=swap');
+
+*{
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+  margin:0;
+  padding: 0;
+  
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/*Navigation Section Start*/
+.nav-bar{
+  margin-left: 110px;
+  margin-right: 110px;
+  padding:30px;
+}
+.chulo-logo{
+  font-weight: 600;
+  color: #E83143;
+}
+/*Logo*/
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  font-size: 22px;  
+}
+/*Navigation Section End*/
+
+/*Wecome Section and Login SectionContianer*/
+.login-container{
+  /* border: 1px solid black; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 100%;
+  display: flex;
+  margin-top: 30px;
+  margin-left:135px;
+  margin-right: 135px;
+  padding: 80px 0;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.welcome-header{
+  display: flex;
+  flex-direction: column;
+}
+
+  /*Welcome Header*/
+.welcome-header h1{
+  font-size: 36.949px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.welcome-header h1>span{
+  color: #E83143;
+}
+
+  /*sub-header*/
+.welcome-header p{
+  color: #787777;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+  /*Login options*/
+.options{
+  display: flex;
+  gap:2rem;
+  margin-top: 20px;
+  /* border: 1px solid black; */
+}
+
+/*Customer Option*/
+.customer-op{
+  display: flex;
+  padding: 24px 28px;
+  flex-direction: column;
+  align-items: center;
+  width: 142px;
+  height: 129px;
+  border-radius: 19.844px;
+  border: 2.273px solid  #E83143;
+  text-decoration: none;
+   color: #E83143; 
+}
+
+  /*Customer Heading*/
+.customer-op h2{
+  /* color: #E83143; */
+  font-family: Poppins;
+  font-size: 19.844px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+  /*Customer Option Image*/
+.customer-op img{
+  width: 38.698px;
+  height: 38.698px;
+  margin-bottom: 0.5rem;
+}
+
+  /*Kitchen Option*/
+  .customer-op:hover{
+    text-decoration: underline;
+  }
+
+  /*Login Section*/
+.login-section{
+  border-left:1px solid #d4cdcd;
+  padding-left:100px;
+
+}
+
+  /*Login Heading*/
+.login-section h1{
+  font-size: 31.188px;
+  font-weight: 600;
+}
+
+.login-section form{
+  display: flex;
+  flex-direction: column;
+}
+  /*lOGIN LABELS*/
+.login-section form label{
+  font-size: 15.337px;
+  font-weight: 400;
+  
+  
+}
+
+/*lOGIN INPUT*/
+.login-section form input{
+  padding: 12px 0 12px 17.254px;
+  border-radius: 5.751px;
+  border: 0.959px solid #000;
+  margin-top: 8px;
+  margin-bottom:20px;
+  width: 451px;
+}
+
+  /*LOGIN FORGET PASSWORD*/
+.login-section .forget{
+  color: #605E5E;
+  font-size: 13.42px;
+  font-weight: 400;
+  text-decoration-line: underline;
+  position: relative;
+  top:-10px;
+  text-align: right;
+  display: block;
+}
+
+  /*lOGIN BUTTON */
+ #login-btn{  
+  width: 451px;
+  height: 49px;
+  padding: 12.394px 180.209px;
+  border-radius: 5.751px;
+  background: #E83143;
+  border: none;
+  color:white;
+  font-size: 15.337px;
+  font-weight: 600;
+  margin-top:15px;
+}
+
+
+
+/*SIGNUP STARTS FROM HERE*/
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left:115px;
+  margin-right: 135px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* border: 2px solid black; */
+  padding: 30px 0 30px 0;
+}
+
+  /*Signup Cover*/
+.cover-img{
+  padding-right:100px;
+  /* border: 2px solid black; */
+}
+.cover-img img{
+  width: 98%;
+  /* border: 2px solid black; */
+
+}
+  /*Signup Section*/
+
+.signup-section{
+  border-left:1px solid #d4cdcd;
+  padding-left:100px;
+}
+
+/*Signup Heading*/
+.signup-section h1{
+  font-size: 32.01px;
+  font-weight: 600;
+  margin-bottom:13px;
+}
+
+  /*Sign up Labels*/
+.signup-section form{
+  display: flex;
+  flex-direction: column;
+}
+.signup-section form label{
+  font-size: 13.587px;
+  font-weight: 400;
+}
+
+  /*Full name Input class*/
+.signup-section form .name-inputs {
+  display: flex;
+  gap:8.5px;
+  
+}
+
+  /*Inputs*/
+.signup-section form input{
+  padding: 8.211px 0 8.211px 10.264px;
+  border-radius: 4.824px;
+  border: 0.883px solid #000;
+  
+  margin-top:5px;
+  margin-bottom:13px;
+}
+.input-length{
+  width:368px;
+}
+
+  /*Signup-button*/
+#signup-btn{
+  width: 368.468px;
+  height: 41.055px;
+  padding: 11.29px 130.349px;
+  border-radius: 4.819px;
+  background: #E83143;
+  border:none;
+  color:white;
+  font-size: 12.737px;
+  font-weight: 600;
+  margin-top:9px;
+  margin-bottom:9px;
+}
+
+  /*ALREADY ACCOUNT HEADING*/
+.signup-section h5{
+  font-size: 12.851px;
+  font-weight: 400;
+  position: relative;
+  left:85px;
+}
+
+.already-login{
+  color: #E83143;
+ font-size: 12.851px;
+  font-weight: 400;
+}
+
+button:hover{
+  cursor: pointer;
+}

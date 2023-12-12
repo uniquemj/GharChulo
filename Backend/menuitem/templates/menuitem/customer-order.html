@@ -1,0 +1,37 @@
+{% extends 'plain-main.html'%}
+{% block content %}
+{% load static %}
+<link rel = "stylesheet" href = "{% static 'css/customerorderstyle.css' %}"/>
+<div class = "order-main-container ">
+<div class="order-container">
+    <h1>My Order</h1>
+    <table class="table">
+      <thead>
+          <th scope="col">Order date</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Quanity</th>
+          <th scope="col">Price</th>
+          <th scope="col">Order status</th>
+      </thead>
+      <tbody>
+        {% for item in order %} 
+          <tr>
+              <td>{{item.date_ordered}}</td>
+              <td>{{item.item.item_name}}</td>
+              <td>x{{item.quantity}}</td>
+              <td>Rs{{item.price}}</td>
+              {% if item.order_status == "ready"%}
+              <td><span class = "btn btn-success">{{item.order_status}}</span></td>
+              {% elif item.order_status == "in-making"%}
+              <td><span class = "btn btn-warning">{{item.order_status}}</span></td>
+              {% else %}
+              <td><span class = "btn btn-danger">{{item.order_status}}</span></td>
+              {% endif %}
+          </tr>
+          
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock content %}

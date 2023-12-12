@@ -1,39 +1,41 @@
-{% extends 'main.html' %}
+{% extends 'plain-main.html'%}
 {% block content %}
-<div class = "container mt-5">
-<form method = "POST" class="col-6 mx-auto card p-5 shadow-lg">
-    {% csrf_token %}
-    <h1>Check out</h1>
-    <hr/>
-    <h2>Delivery Address</h2>
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Address</label>
-      <input type="text" name = "address" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+{% load static %}
+{% load cart %}
+<link rel="stylesheet" href = "{% static 'css/checkout.css'%}"/>
+<div class="delivery-container">
+    <div class= "image-container">
+        <a href = "{{request.META.HTTP_REFERER}}"><i class="fa-solid fa-arrow-left-long"></i> Back</a> 
+        <img src="{% static 'images/checkout/delivery-girl.png'%}" alt="delivery-girl">
     </div>
-    <div class="container mt-5">
-        <h1>Order Summary</h1>
-        <table class="table mt-2 mb-3">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col"></th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for item in item%}
-            <tr>
-              <th>{{item.item_name}}</th>
-              <td>Rs. {{item|}}</td>
-              <td>x{{item.quantity}}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-        <h4>Items: {{cartItems}}</h4>
-        <h4>Total: Rs.{{order.get_cart_total}} </h4>
-    <button type="submit" class="btn btn-primary">Pay</button>
-  </form>
+    <div class="order-section">
+        <h1>Order Confirmation</h1>
+        
+      <form class="delivery-address" method = "POST">
+        {% csrf_token %}
+          <label for="delivery-address">Delivery Location</label>
+          <input type="text" name="address" placeholder="Enter Address" required>
+          <input type="text" name="phone_no" placeholder="Enter Contact no." required>
+          <h3 class="order-details">Order Details</h3>
+          <div class="items-container">
+              {% for item in item%}
+              <div class="item">
+                  <p>{{item.item_name}}</p>
+                  <p>x{{item|get_quantity:request.session.cart}}</p>
+                  <p class="highlight">{{item|get_item_total:request.session.cart}}</p>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="subtotal">
+            <div class="label">Sub total</div>
+            <div class="price">Rs. {{item|get_cart_total:request.session.cart}}</div>
+        </div>
+        <div class="total">
+            <div class="label"><span class="highlight">Total</span></div>
+            <div class="price"><span class="highlight">Rs. {{item|get_cart_total:request.session.cart}}</span></div>
+        </div>
+        <button type="submit" class="pay-btn">PAY</button>
+    </div>
+</form>
 </div>
-
 {% endblock content %}

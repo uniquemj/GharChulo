@@ -1,0 +1,64 @@
+{% extends 'home-main.html' %} 
+{% block content%} 
+{% load static %}
+{% if page == "home"%}
+<div class="kitchens-section">
+    <h1>Kitchens Near you</h1>
+    <p class="sub">Kitchens that serve the town's tastiest and healthiest food.</p>
+    <div class="kitchen-container">
+        {% for kitchen in queryset %}
+        <div class="kitchen">
+            <img src="{% static 'images/home-image/Food 1.png'%}" alt="kitchen1">
+            <div class="border-container">
+                <div class="name-loc">
+                    <div class="name">
+                        <p>{{kitchen.kitchen_name}}</p>
+                    </div>
+                    <div class="location">
+                        
+                        <h3></h3>
+                    </div>
+                </div>
+                <div class="service-arrow">
+                    <div class="services">
+                        <p>Breakfast, Lunch and Dinner Services</p>
+                    </div>
+                    <div class="arrow">
+                        <a href="{% url 'kitchenPage' kitchen.kitchen_name%}"><i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% if page == "search"%}
+<div class="search-results">
+    <h1>Kitchens to explore</h1>
+    <h4>Satisfy your cravings with these fresh and flavoursome items.</h4>
+    <h3><span class="search-header">Search Results:</span>{{query}}</h3>
+    <div class = "results-container">
+    {% if items %}
+      {% for item in items %}
+        <div class = "food-item">
+            <a href=""><img src="{{item.item_image.url}}"></a>   
+                <div class="item-sub-section">
+                    <div class="item-name-price">
+                        <h1>{{item.item_name}}</h1>
+                        <h2>Rs.{{item.item_price}}</h2>
+                    </div>
+                    <h4>By {{item.added_by}}</h4>
+                    <p>{{item.item_description}}</p>
+                    <button data-product="{{item.id}}" data-action="add" class="addtocart update-cart">Add to cart</button>
+                </div>
+        </div>
+      {% endfor %}       
+    {% else %}
+        <h1>No result</h1>
+    {% endif %}    
+    </div>                 
+  </div>  
+{% endif %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% load static %}
+<aside>
+    <a href="" class = "logo"><img src="{% static 'images/login-image/logo_kitchen.svg'%}" width="100%" alt="GharChulo Logo"></a>
+    <div class="catalogue">
+        <ul>
+            <a href="{% url 'kitchen-dashboard'%}"><li id="profile">Profile</li></a>
+            <br>
+            <a href="{% url 'kitchen-product'%}"><li id="product" >Product</li></a>
+            <br>
+            <a href="{% url 'kitchen-order'%}"><li id="orders">Orders</li></a>
+            <a href="{% url 'setting'%}"><li id="accsett">Account & Setting</li></a>
+            <a href="{% url 'logout' %}"><li id="logout">Logout</li></a>
+        </ul>
+    </div>
+
+</aside>

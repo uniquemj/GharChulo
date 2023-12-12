@@ -1,0 +1,48 @@
+{% extends 'kitchenpage-main.html' %}
+{% block content %}
+{% load static %}
+    <div class="profile">
+        <div class="profile-pic">
+            <img src="{{kitchen.image.url}}">
+        </div>
+        <div class="profile-name">
+            <h2>{{kitchen.kitchen_name}}</h2>
+            <p>{{kitchen.location}}</p>
+        </div>
+    </div> 
+    <div class="nav-menu">
+        <div class="menu-about">  
+            <a href="" class="menu">Menu</a>
+        </div>
+        {% comment %} <div class="search-food">
+        <form>
+            <input type="text" value="Search" id="search-btn">
+            <button type="submit" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        </div> {% endcomment %}
+        
+    </div>
+    <div class="line"><hr></div>
+    
+    <div class="menu-columns">
+        <div class="menu-container">
+            {% for item in kitchen.items.all%}
+            <div class="img-des">
+                <div class="menu-img">
+                    <img src="{{item.item_image.url}}">
+                </div>
+                <div class="menu-des">
+                    <div class="name-price">
+                        <h2>{{item.item_name}}</h2>
+                        <h4>Rs.{{item.item_price}}</h4>
+                    </div>
+                <p>{{item.item_description}}</p>
+                <button data-product="{{item.id}}"
+                data-action="add"
+                class="btn update-cart">Add to cart</button>
+                </div>   
+            </div>
+            {% endfor %}
+        </div>
+    
+{% endblock content %}

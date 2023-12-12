@@ -1,8 +1,8 @@
-{% extends 'main.html'%}
+{% extends 'kitchen-dashboard-main.html'%}
 
 {% block content %}
-<div class="container mt-5">
-    <form method = "POST" enctype = "multipart/form-data"  class="col-6 mx-auto card p-5 shadow-lg">
+<div class="product-form-container">
+    <form method = "POST" enctype = "multipart/form-data"  class="form">
         <h1>Add Product</h1>
         {% csrf_token %}
         <div class="mb-3">

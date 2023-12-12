@@ -33,13 +33,15 @@ class Customer(models.Model):
 class Kitchen(models.Model):
     user = models.OneToOneField(User, related_name="kitchenuser",on_delete=models.CASCADE)
     kitchen_name = models.CharField(max_length=150,null=True, blank=True)
-    owned_by = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='profile/kitchen', null=True, blank=True)
+    owned_by = models.CharField(max_length=100, null=True, blank=True)
+    image = models.ImageField(upload_to='profile/kitchen',default='profile/kitchen/profile.svg', null=True, blank=True)
     phone_number = models.CharField(max_length=10,null=True, blank=True)
+    service = models.CharField(max_length=250, null=True, blank=True)
     location = models.TextField(null=True, blank=True)
-    latitude = models.DecimalField(max_digits=20, decimal_places=10, null=True, blank=True)
-    longitude = models.DecimalField(max_digits=20, decimal_places=10, null=True, blank=True)
+    latitude = models.DecimalField(max_digits=20, decimal_places=18, null=True, blank=True)
+    longitude = models.DecimalField(max_digits=20, decimal_places=18, null=True, blank=True)
     is_blacklisted = models.BooleanField(default=False)
+    revenue = models.IntegerField(default=0)
 
     objects = KitchenManager
     admin_objects = models.Manager

@@ -1,44 +1,50 @@
-{% extends 'main.html' %} {% block content %}
-<div class="container d-flex justify-content-between mt-5">
-    <h2>Items: {{cartItems}} </h2>
-    <h2>Total: {{order.get_cart_total}}</h2>
-    <a href = "{% url 'checkout'%}" class = "btn btn-success">Checkout</a>
-</div>
-<div class="container d-flex mt-5">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Product Name</th>
-        <th scope="col">Product Price</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for item in queryset%}
-      <tr>
-        <td>
-          <img
-            src="{{item.item.item_image.url}}"
-            class="card-img-top"
-            alt="..."
-            width="50"
-            height="150"
-          />
-        </td>
-        <th>{{item.item.item_name}}</th>
-        <td>Rs. {{item.item.item_price}}</td>
-        <td class = "d-flex justify-space-evenly">
-          <button data-product = "{{item.item.id}}" data-action = "add"  class = "btn btn-success update-cart" >+</button>
-          {{item.quantity}}
-          <button data-product = "{{item.item.id}}" data-action = "remove"  class = "btn btn-success update-cart">-</button>
-        </td>
-        <td>{{item.get_total}}</td>
-        <td><a href = "{% url 'remove-cart-item' item.id%}" class = "btn btn-danger">Remove</a></td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+{% extends 'plain-main.html' %} 
+{% block content %}
+{% load cart %}
+<div class="cart-container">
+  <div class="cart-header">
+    <div class = "cart-logo">  
+      <i class="fa-solid fa-cart-shopping"></i>
+      <h1>Cart</h1>
+    </div> 
+    <div class = "back-btn">
+      <a href = "{% url 'home'%}"><i class="fa-solid fa-arrow-left-long"></i> Back</a>
+    </div>
+  </div>
+
+  <div class="titles">
+      <p class="title-item">Items({{request.session.cart|get_total_quanity}})</p>
+      <p>Quantity</p>
+      <p>Price</p>
+  </div>
+  <div class="items-container">
+  {% for item in queryset %}
+    <div class="items">
+        <div class="img-info">
+            <img src="{{item.item_image.url}}">
+            <div class="item-info">
+                <h3>{{item.item_name}}</h3>
+                <p>{{item.item_description}}</p>
+            </div>
+        </div>
+        <div class="plus-minus-btn">
+            <button data-product = "{{item.id}}" data-action = "remove" class="btn-minus update-cart" type="button"><i
+                    class="fa-solid fa-minus"></i></button>
+            <p>{{item|get_quantity:request.session.cart}}</p>
+            <button data-product = "{{item.id}}" data-action = "add" class="btn-plus update-cart" type="button"><i
+                    class="fa-solid fa-plus"></i></button>
+        </div>
+        <div class="price-del">
+            <p>Rs. {{item|get_item_total:request.session.cart}}</p>
+            <button data-product = "{{item.id}}" data-action = "delete"  class="del-btn update-cart"><i class="fa-solid fa-trash"></i></button>
+        </div>
+    </div>
+  {% endfor %}  
+  </div>
+  <div class="total-check">
+      <h3>Total: Rs. <span class="total-rs">{{queryset|get_cart_total:request.session.cart}}</span></h3>
+      <a href="{% url 'checkout'%}" class="checkout-btn">Checkout</a>
+  </div>
+ 
 </div>
 {% endblock content%}

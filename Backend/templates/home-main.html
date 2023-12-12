@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GharChulo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+          const cookies = document.cookie.split(";");
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+              cookieValue = decodeURIComponent(
+                cookie.substring(name.length + 1)
+              );
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+      const csrftoken = getCookie("csrftoken");
+    </script>
+    <link rel="stylesheet" href="{% static 'css/home-styles.css'%}" />
+  </head>
+  <body>
+    {% include 'home-navbar.html'%} 
+    {% block content %} 
+    
+    {% endblock content %}
+    {% include 'footer.html'%}
+    <script
+      src="https://kit.fontawesome.com/e6e2162b61.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{% static 'js/getCurrentLocation.js'%}"
+    ></script>
+    <script type = "text/javascript" src = "{% static 'js/cart.js'%}"></script>
+  </body>
+</html>

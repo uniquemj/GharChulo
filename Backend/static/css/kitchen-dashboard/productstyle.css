@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+*,html,body{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+ul li:active{
+    background-color: rgb(247, 47, 47);
+    color: white;
+    border-radius:20px;
+}
+.myproducts{
+    background-color: rgb(247, 47, 47);
+    flex: 1;
+    padding: 30px 20px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 50%;
+}
+
+header{
+    margin: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+a#addproduct{
+    padding: 10px 20px;
+    border: none;
+    background-color:lightgreen;
+    text-decoration: none;
+}
+
+table{
+    border-collapse: collapse;
+    text-align: center;
+    width: 100%;
+}
+thead{
+    background-color: orange;
+    color: white;
+}
+thead th{
+    position: sticky;
+}
+thead tr th{
+    padding: 20px;
+}
+tbody:before {
+    content:"@";
+    display:block;
+    line-height:10px;
+    text-indent:-99999px;
+}
+
+.tablefixhead {
+    overflow-y: scroll; 
+    height: 60vh;
+}
+.tablefixhead thead th {
+    position: sticky; 
+    top: 0px; 
+    z-index: 1;
+}
+
+th,td {
+    padding: 8px 16px;
+}
+th{
+    background: orange;
+}
+.item{
+    background-color: white;
+    border-bottom: 10px solid rgb(247, 47, 47);
+}
+
+.item .imgcover{
+    width: 200px;
+    height: 140px;
+    border-radius: 10px;
+    margin: 10px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    
+}
+.item .imgcover img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+table a{
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    text-decoration: none;
+    color: white;
+}
+.success{
+    background-color: lightgreen;
+}
+.danger{
+    background-color: red;
+}
+.warning{
+    background-color: orange;
+}
+
+.order-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.product-form-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    height: 100%;
+}
+
+.product-form-container .form{
+    background-color: rgb(221, 221, 221);
+    padding: 20px 50px;
+    width: 70%;
+    border-radius: 10px;
+}
+.form h1{
+    text-align: center;
+}
+.form div{
+    margin: 10px 0;
+    text-align: center;
+}
+
+div label{
+    display: block;
+    margin: 1rem 0;
+}
+
+div input{
+    width: 100%;
+    padding: 1rem 1rem;
+}
+div textarea{
+    width: 100%;
+    padding: 1rem 1rem;
+}
+
+div input[type="file"]{
+    background-color: white;
+    width: 50%;
+    padding: 0;
+}
+
+.form .btn-primary{
+    background-color: rgb(51, 221, 51);
+    padding: 1rem;
+    width: 100%;
+    border: none;
+    color: white;
+}
+div.input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem
+}
+
+.form button:hover{
+    cursor: pointer;
+}

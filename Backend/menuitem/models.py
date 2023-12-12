@@ -28,6 +28,7 @@ class Order(models.Model):
     quantity = models.IntegerField(default=1)
     price = models.IntegerField(default=0)
     address = models.CharField(max_length=100, blank=True)
+    phone_no = models.CharField(max_length=10, blank=True)
     is_completed = models.BooleanField(default=False)
     order_status = models.CharField(choices=ORDER_STATUS, max_length=20, default='pending')
     date_ordered = models.DateField(auto_now_add = True)

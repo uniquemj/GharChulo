@@ -1,0 +1,67 @@
+{% load static %}
+{% load cart %}
+<nav>
+  {% if not page == "kitchenPage"%}
+    <div class="logo">
+        <img src="{% static 'images/login-image/logo_ok.svg'%}">
+        <a href="{%url 'home'%}"><p>Ghar<span class="chulo-logo">Chulo</span></p></a>
+    </div>
+    <div class="nav-icons">
+        <div class="notification-dropdown">
+            <button class="dropbtn"><img src = "{% static 'images/home-image/bell.svg'%}"/></button>
+            <div class="notification-content">
+                <h3>Notifications</h3>
+                <p>Your Order has been delivered.</p>
+                <p>Your Order is ready to be delivered.</p>
+                <p>Your Order has been placed.</p>
+            </div>
+        </div>
+        
+        {% if request.session.cart %}
+          <a href="{% url 'cart'%}"><img src = "{% static 'images/home-image/cart.svg'%}"/><span> ({{request.session.cart|get_total_quanity}})</span></a>
+        {% else %}
+          <a href="{% url 'cart'%}"><img src = "{% static 'images/home-image/cart.svg'%}"/></a>
+        {%endif %} 
+
+        <div class="user-dropdown">
+            <button class="dropbtn"><img src = "{% static 'images/home-image/user.svg'%}"/></button>
+            <div class="dropdown-content">
+              {% comment %} <a href="#">My Account</a> {% endcomment %}
+              <a href="{% url 'order-detail'%}">My Orders</a>
+              <a href="{% url 'logout'%}">Logout</a>
+            </div>
+        </div>
+    </div>
+  {% else %}
+  <div class="logo">
+    <img src="{% static 'images/login-image/logo_white.svg'%}">
+    <a href="{%url 'home'%}"><p>Ghar<span class="chulo-logo">Chulo</span></p></a>
+  </div>
+  <div class="nav-icons">
+      <div class="notification-dropdown">
+          <button class="dropbtn"><img src = "{% static 'images/login-image/bell_white.svg'%}"/></button>
+          <div class="notification-content">
+              <h3>Notifications</h3>
+              <p>Your Order has been delivered.</p>
+              <p>Your Order is ready to be delivered.</p>
+              <p>Your Order has been placed.</p>
+          </div>
+      </div>
+      
+      {% if request.session.cart %}
+        <a href="{% url 'cart'%}"><img src = "{% static 'images/login-image/cart_white.svg'%}"/><span> ({{request.session.cart|get_total_quanity}})</span></a>
+      {% else %}
+        <a href="{% url 'cart'%}"><img src = "{% static 'images/login-image/cart_white.svg'%}"/></a>
+      {%endif %} 
+
+      <div class="user-dropdown">
+          <button class="dropbtn"><img src = "{% static 'images/login-image/user_white.svg'%}"/></button>
+          <div class="dropdown-content">
+            {% comment %} <a href="#">My Account</a> {% endcomment %}
+            <a href="{% url 'order-detail'%}">My Orders</a>
+            <a href="{% url 'logout'%}">Logout</a>
+          </div>
+      </div>
+  </div>
+  {% endif %}
+</nav>

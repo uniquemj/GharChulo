@@ -22,7 +22,7 @@ def CustomerRegistration(request):
         messages.success(request,'Customer Registration Completed!!')
         return redirect('customer-signup')
     
-    return render(request,'accounts/customer_signup.html')
+    return render(request,'accounts/new_customer_signup.html')
 
 
 def KitchenRegistration(request):
@@ -47,7 +47,7 @@ def KitchenRegistration(request):
         messages.success(request,'Kitchen Registration Completed!!')
         return redirect('kitchen-signup')
     
-    return render(request,'accounts/kitchen_signup.html')
+    return render(request,'accounts/new_kitchen_signup.html')
         
 
 def LoginProcess(request):
@@ -68,11 +68,16 @@ def LoginProcess(request):
             messages.info(request,"Password Incorrect!!!")
             return redirect('login-page')
         else:
-            login(request,user)
-            return redirect('home')
+            if user.is_customer:
+                login(request,user)
+                return redirect('home')
+            elif user.is_kitchen:
+                login(request,user)
+                return redirect('kitchen-dashboard')
+            
     
-    return render(request,'accounts/login_page.html')
+    return render(request,'accounts/new_login_page.html')
 
 def LogoutProcess(request):
     logout(request)
-    return redirect('login-page')
+    return redirect('home')

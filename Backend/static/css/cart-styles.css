@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Seaweed+Script&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: Poppins;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    
+  }
+
+  /*Navigation Section Start*/
+/*Navigation Item*/
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    padding: 0;
+    margin-left: 110px;
+    margin-right: 110px;
+    margin-top: -6px;
+  }
+  
+  /*Logo*/
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    color: black;
+    font-size: 22px;
+  }
+  .logo a{
+    text-decoration: none;
+  }
+  .chulo-logo {
+    font-weight: 600;
+    color: #DC2234;
+  
+  }
+  
+  
+  /*Navigation ICcns*/
+  .nav-icons {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 18px;
+  }
+  
+  .nav-icons a{
+    color:black;
+    text-decoration: none;
+    font-family:'Poppins', sans-serif ;
+  }
+  .nav-icons a>span{
+    font-size: 14px;
+  }
+  /*Navigation Section End*/
+  
+  /*Cart COntainer Section*/
+  .cart-container {
+    margin-left: 110px;
+    margin-right: 110px;
+    max-width: 761.854px;
+    
+  }
+  
+  /*Cart Icon and Header*/
+  .cart-header {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    gap: 0.5rem;
+    justify-content: space-between;
+  }
+
+  .cart-header .cart-logo{
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .back-btn a{
+    text-decoration: none;
+    color: #000;
+    font-size: 15px;
+  }
+  
+  .cart-header h1 {
+    color: #000;
+    font-family: Poppins;
+    font-size: 25px;
+    font-weight: 600;
+  }
+  
+  /*Items Details Titles*/
+  .titles {
+    display: flex;
+    gap: 6.5rem;
+    border-bottom: 0.5px solid #817D7D;
+    max-width: 710px;
+    margin-bottom:20px;
+    
+    
+  }
+  
+  .title-item {
+    margin-right: 255px;
+    padding-left: 15px;
+  }
+  
+  /*Titles Header*/
+  .titles p {
+    color: #000;
+    font-family: Poppins;
+    font-size: 16.332px;
+    font-weight: 600;
+  }
+  
+  /*Food Items*/
+  .items {
+    display: flex;
+    align-items: center;
+    gap: 6.5rem;
+    margin-bottom: 20px;
+    border-bottom: 1px;
+    
+  }
+  
+  /*Item Image and Detail Cnntainer*/
+  .img-info {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .img-info img{
+    width: 133.51px;
+    height: 83.709px;
+    border-radius: 4px;
+  }
+  
+  .items-container{
+    overflow-y:scroll;
+    height:300px;
+  
+  }
+  /*Item Name*/
+  .item-info h3 {
+    color: #000;
+    font-family: Poppins;
+    font-size: 15.312px;
+    font-weight: 600;
+    margin-bottom: 1px;
+  }
+  
+  /*Item Detail*/
+  .item-info p {
+    font-size: 11.148px;
+    font-weight: 400;
+    width: 185.43px;
+    margin-top: 1px;
+  }
+  
+  /*Plus Minus Button COntainer*/
+  .plus-minus-btn {
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 71px;
+    height: 18px;
+    
+  }
+  .plus-minus-btn p{
+    font-size: 16.141px;
+  }
+  /*Plus Button*/
+  .btn-plus {
+    text-align: center;
+    border: none;
+    font-size: 1rem;
+    background-color: transparent;
+    
+  }
+  
+  /*Minus Button*/
+  .btn-minus {
+    text-align: center;
+    border: none;
+    font-size: 1rem;
+    background-color: transparent;
+  }
+  
+  
+  /*Price and Delete Button COntainer*/
+  .price-del {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  /*Item Price*/
+  .price-del p {
+    color: #000;
+    font-family: Poppins;
+    font-size: 16.139px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  /*Delete Button*/
+  .del-btn {
+    background-color: transparent;
+    font-size: 16px;
+    border:none;
+    
+  }
+  
+  /*Checkout Button*/
+  .checkout-btn {
+    padding: 9.29px 47.682px;
+    background: #DC2234;
+    border-radius: 5.574px;
+    color: white;
+    text-decoration: none;
+    font-size: 14.914px;
+    width: 160px;
+    height: 36px;
+    font-weight: 500;
+    
+  }
+  .checkout-btn:hover{
+    cursor: pointer;
+  }
+  
+  .total-check h3{
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    padding-left:15px;
+    
+    
+  }
+  .total-rs{
+  font-weight: 400;
+  }
+  
+  .total-check{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top:1px solid black;
+    margin-top:2rem;
+    max-width: 710px;
+  }
+
+  footer{
+    margin-top: 40px;
+  }
+
+  button:hover{
+    cursor: pointer;
+  }

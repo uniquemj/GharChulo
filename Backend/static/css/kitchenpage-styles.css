@@ -1,0 +1,504 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Seaweed+Script&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+  
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  
+  }
+  a:hover {
+    cursor: pointer;
+  }
+
+  .nav-icons a{
+    text-decoration: none;
+    color:white;
+  }
+  
+  
+  /*Background Image*/
+  .kitchen-background {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+
+  .kitchen-background img{
+    width: 100%;
+  }
+
+ nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 0;
+    margin-left: 110px;
+    margin-right: 110px;
+    margin-top: -6px;
+  }
+  
+  /*Logo*/
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 22px;
+  }
+  .logo img{
+    color: #F3F3F3;
+  }
+  
+  .logo a{
+    color: white;
+  }
+  .chulo-logo {
+    font-weight: 600;
+    color: #DC2234;
+  }
+  
+  
+  /*Navigation ICcns*/
+  .nav-icons {
+    display: flex;
+    color: white;
+    gap: 1.5rem;
+    font-size: 18px;
+  }
+  
+  .nav-icons a{
+    color:white;
+  }
+
+  /*Navigation Section End*/
+  
+  
+  /*Profile Picture and Name Section*/
+  .profile {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: 150px;
+    margin-right: 110px;
+    margin-top: 100px;
+  }
+  
+  /*Profile Picture*/
+  .profile-pic img {
+    width: 241px;
+    height: 241px;
+    border-radius: 50%;
+    object-fit: cover;
+    /* border: 0.828px solid #000; */
+  }
+  
+  /*Profile Kitchen's Name and Location Container*/
+  .profile-name {
+    color: white;
+    margin: 0;
+    padding-top: 20px;
+  
+  }
+  
+  /*Profile Kitchens Name*/
+  .profile-name h2 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: -20px;
+  }
+  
+  /*Profile Kitchens Location*/
+  .profile-name p {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  /*Profile Section End*/
+  
+  /*Menu-Navigaiton Section*/
+  
+  /*Menu - Navigation Bar Container*/
+  .nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items:stretch;
+    padding-left: 110px;
+    padding-right: 230px;
+    margin-top:7px; 
+  }
+  
+  /*Menu and About Element Container*/
+  .menu-about {
+    display: flex;
+    gap: 2rem;
+    margin-left: 50px; 
+   
+    
+  }
+  
+  .menu-about a{
+    padding:0px 10px 10px 10px ;
+    margin-top:0;
+    color:black;
+    text-decoration: none;
+  }
+  .menu{
+    border-bottom: 7px solid #DC2234;
+    
+  }
+  
+  .line{
+    position: relative;
+    top:-12px;
+    z-index: -1;
+  }
+  
+  .search-food form{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+  border: 0.5px solid #131212;
+  height: 32px;
+  width: 280px;
+  
+  
+  }
+  
+  .search-food form input{
+  border: none;
+  border-radius: 5px 0px 0px 5px;
+  padding-left:10px;
+  }
+  
+  .search-food form input:focus{
+    outline: none;
+  }
+  
+  .search-food form button{
+    border: none;
+    padding: 4px 12px;
+    border-radius: 0px 3.7px 3.7px 0px;
+  background:  #E83143;
+  color:white;
+  }
+  
+  /*Menu-Navigation Section End*/
+  
+  
+  /*Kitchen's Menu Container*/
+  .menu-container {
+    margin: 35px 110px 0px 155px;
+    width: 72%;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  /*Food Items in Menu*/
+  .food-item {
+    margin: 0;
+  }
+  
+  /*FOood Image and Description COntainer*/
+  .img-des {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    bottom: 1px solid black;
+    margin-bottom: 25px;
+    margin-top: 0;
+    
+  }
+  .btn:hover{
+    cursor: pointer;
+    background-color: #DC2234;
+    color: white;
+  }
+
+
+  .menu-img img{
+    width: 192px;
+    height: 137px;
+    border-radius: 6px;
+  }
+  
+  /*Food Name and Price Container*/
+  .name-price {
+    display: flex;
+    align-items: center;
+    gap: 33px;
+    margin: 0;
+  }
+  
+  /*Food Item Description and Order Button COntainer*/
+  .menu-des {
+    position: relative;
+    top: -15px;
+  }
+  
+  /*Food Name*/
+  .menu-des h2 {
+    font-size: 14.623px;
+    font-weight: 600;
+  }
+  
+  /*Food Pricc*/
+  .menu-des h4 {
+    font-size: 13px;
+    font-weight: 400;
+  }
+  
+  /*Food Description*/
+  .menu-des p {
+    max-width: 205.231px;
+    font-size: 11px;
+    font-weight: 400;
+    margin-top: -5px;
+  }
+  
+  /*Order Button*/
+  .menu-des button {
+    padding: 5px 36px;
+    border-radius: 6px;
+    border: 0.5px solid #DC2234;
+    width: 194.11px;
+    margin-top: 10px;
+    background: none;
+    color: #DC2234;
+  }
+  
+  a:hover {
+    cursor: pointer;
+  }
+  
+  /*Kitchen Menu Section End*/
+  
+  /*Footer Section*/
+  /*footer-logo*/
+  footer{
+    background: #F3F3F3;
+    font-family: poppins;
+  }
+  
+  /*Footer Container*/
+  .footer-container{
+    display: flex;
+    padding: 40px 0px 89px 115px;
+    margin-right:0%;
+    margin-top: 120px;
+    gap: 35px;  
+  }
+  
+  /*Logo*/
+  .footer-logo  {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 18px;
+    
+  }
+  
+  /*Logo Icon*/
+  .footer-logo img{
+    width: 28.916px;
+  height: 28.916px;
+    
+  }
+  
+  /*Gharchulo ABout*/
+  .about{
+    font-size: 11.41px;
+    font-weight: 400;
+    max-width: 294.835px;
+    margin:0%;
+    
+  }
+  
+  /*Footer Headings*/
+  .footer-title{
+    font-size: 15.804px;
+  font-weight: 600;
+  
+  }
+  
+  .explore {
+    padding-top:3.5px;
+    
+    
+  }
+  .get-help {
+    padding-top:3.5px;
+  }
+  .customer-service
+  {
+    padding-top:3.5px;
+  
+  }
+  
+  /*Footer SubHeadings*/
+  .footer-container li{
+    list-style: none;
+    font-size: 12.463px;
+    font-weight: 300;
+    padding-top: 0%;
+    padding-bottom:7px;
+   
+  }
+  
+  
+  .social-icons {
+  font-size: 32px;
+  display:flex;
+  gap: 1rem;
+  margin-top: 9px;
+  }
+  /*Footer Section ENd*/
+
+    /*Navigation Section Start*/
+/*Navigation Item*/
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 0;
+  margin-left: 110px;
+  margin-right: 110px;
+  margin-top: -6px;
+}
+
+/*Logo*/
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-size: 22px;
+  text-decoration: none;
+}
+.logo a{
+  text-decoration: none;
+}
+.chulo-logo {
+  font-weight: 600;
+  color: #DC2234;
+  text-decoration: none;
+}
+
+
+/*Navigation ICcns*/
+.nav-icons {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 18px;
+  color: white;
+}
+
+.nav-icons a{
+  color:white;
+  text-decoration: none;
+  font-family:'Poppins', sans-serif ;
+}
+.nav-icons a>span{
+  font-size: 14px;
+}
+/*Navigation Section End*/
+
+/*DROPDOWN USER*/
+.dropbtn{
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  color: white;
+}
+
+.user-dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content{
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 210px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a{
+  text-decoration: none;
+  display: block;
+  padding:15px;
+  width:100%;
+  font-size: 15px; 
+  color: #000;
+ }
+
+ .user-dropdown{
+  font-family: poppins;
+ }
+ 
+
+ /* .hello-msg{
+  display: flex;
+  align-items: center;
+  gap:0.5rem;
+  font-size: 15px;
+  font-weight: 400;
+
+  margin:0px;
+  padding-left:15px;
+ } */
+
+.dropdown-content a:hover{
+  color:#DC2234;
+  background-color: transparent;
+  font-weight: 600;
+}
+
+.notification-dropdown
+ {
+  font-family: 'Poppins';
+  color: black;
+ }
+
+ .notification-dropdown:hover .notification-content {
+  display: block;
+}
+
+.notification-content{
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 210px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  padding:0;
+}
+
+.notification-content h3{
+  font-size: 15px;
+  font-weight: 400;
+  background-color:#DC2234;
+  color:white;
+  margin:0;
+  padding:15px;
+}
+
+.notification-content p{
+  font-size:12px;
+  max-width: 180px;
+  padding: 0 0px 5px 15px;
+  
+}

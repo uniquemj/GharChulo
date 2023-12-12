@@ -29,10 +29,10 @@ def AddProduct(request):
                 item_image = item_image
             )
             messages.success(request,'Product Added !!')
-            return redirect('add-product')
+            return redirect('kitchen-product')
         
         else:
-            return redirect('add-product')
+            return redirect('kitchen-product')
         
     
     return render(request,'menuitem/product.html')
@@ -57,7 +57,7 @@ def editProduct(request, id):
 
         item.save()
         messages.success(request,'Product Updated!!!')
-        return redirect('home')
+        return redirect('kitchen-product')
     
     return render(request,'menuitem/edit-product.html',{'item': item})
 
@@ -65,7 +65,7 @@ def editProduct(request, id):
 def deleteProduct(request,id):
     item = Item.objects.get(id = id)
     item.delete()
-    return redirect('home')
+    return redirect('kitchen-product')
 
 
 @login_required(login_url='login-page')
@@ -77,7 +77,7 @@ def new_cart(request):
         'queryset': item
     }
 
-    return render(request,'menuitem/new_cart.html', context)
+    return render(request,'menuitem/cart.html', context)
 
 
 
@@ -118,6 +118,7 @@ def checkout(request):
     
     if request.method == "POST":
         address = request.POST.get('address')
+        phone_no = request.POST.get('phone_no')
         customer = request.user.customer
 
         for item in items:
@@ -129,6 +130,7 @@ def checkout(request):
                     quantity = cart[str(item.id)],
                     price = item.item_price * cart[str(item.id)],
                     address = address,
+                    phone_no = phone_no,
                 ) 
             order.save()  
             request.session['cart'] = {}
@@ -139,27 +141,31 @@ def checkout(request):
         'item':items
     }
 
-    return render(request,'menuitem/new_checkout.html',context)
+    return render(request,'menuitem/checkout.html',context)
 
 @login_required(login_url='login-page')
 def OrderDetail(request):
-    order = Order.objects.filter(customer = request.user.customer, is_completed = False).order_by('-date_ordered')
+    order = Order.objects.filter(customer = request.user.customer).order_by('-date_ordered')
 
     context = {
         'order':order
     }
 
-    return render(request,'menuitem/orderdetail.html',context)
+    return render(request,'menuitem/customer-order.html',context)
 
 
 def KitchenOrder(request):
     if not Kitchen.objects.filter(user = request.user).exists():
         logout(request)
         return redirect('login-page')
+    
     kitchen = Kitchen.objects.get(user = request.user)
     order = Order.objects.filter(kitchen = kitchen, is_completed = False)
+    order_completed = Order.objects.filter(kitchen = kitchen, is_completed = True) 
     context = {
-        'order':order
+        'order':order,
+        'order_completed':order_completed,
+
     }
 
     return render(request,'menuitem/kitchenorder.html',context)

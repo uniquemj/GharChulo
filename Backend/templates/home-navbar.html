@@ -1,0 +1,72 @@
+{% load static %}
+{% load cart %}
+<div class="cover-container">
+    <div class="left-elements">
+        <div class="land-nav-items">
+            <div class="land-logo">
+                <img src="{% static 'images/login-image/logo_ok.svg'%}">
+                <a href="{%url 'home'%}"><p>Ghar<span class="chulo-logo">Chulo</span></p></a>
+            </div>
+            {% if request.user.is_authenticated %}
+            <div class="land-nav-icons">
+                <div class="notification-dropdown">
+                    <button class="dropbtn"><img src = "{% static 'images/home-image/bell.svg'%}"/></button>
+                    <div class="notification-content">
+                        <h3>Notifications</h3>
+                        <p>Your Order has been delivered.</p>
+                        <p>Your Order is ready to be delivered.</p>
+                        <p>Your Order has been placed.</p>
+                    </div>
+                </div>
+                
+                {% if request.session.cart %}
+                  <a href="{% url 'cart'%}"><img src = "{% static 'images/home-image/cart.svg'%}"/><span> ({{request.session.cart|get_total_quanity}})</span></a>
+                {% else %}
+                  <a href="{% url 'cart'%}"><img src = "{% static 'images/home-image/cart.svg'%}"/></a>
+                {%endif %} 
+
+                <div class="user-dropdown">
+                    <button class="dropbtn"><img src = "{% static 'images/home-image/user.svg'%}"/></button>
+                    <div class="dropdown-content">
+                      {% comment %} <a href="#">My Account</a> {% endcomment %}
+                      <a href="{% url 'order-detail'%}">My Orders</a>
+                      <a href="{% url 'logout'%}">Logout</a>
+                    </div>
+                </div>
+            </div>
+            {%else%}
+            <div class="login-signup">
+                <a href = "{% url 'login-page'%}"> <button class="login-btn">Login</button></a>
+                 <a href = "{% url 'login-page'%}"><button class="signup-btn">Signup</button></a>
+             </div>
+             {%endif%}
+        </div>
+        <div class="land-header">
+            <h3>Hungry?</h3>
+            <h1>Grab Homecooked Meals Near You.</h1>
+            <h2>Discover and Order Local Homecooked Meals from Kitchens Near You</h2>
+            {% if request.user.is_authenticated %}
+            <p>What are you craving?</p>
+            <div class="search-bar">
+                <form method = "GET">
+                    <input type="text" id="food-search" name = "food-search" placeholder="Search by Food">
+                    <button type = "submit" id="submit" class="search-button">Search</button>
+                </form>
+                
+            </div>
+            {% else %}
+            <div class = "get-start">
+                <a href = ""><button class="start-btn">Get Started</button></a>
+                <a><button class="learn-btn">Learn More</button></a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="background">
+        <img src="{% static 'images/home-image/image1.png'%}">
+        <img src="{% static 'images/home-image/image2.png'%}">
+        <img src="{% static 'images/home-image/image3.png'%}">
+        <img src="{% static 'images/home-image/image4.png'%}">
+    </div>
+
+</div>

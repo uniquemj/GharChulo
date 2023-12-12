@@ -1,86 +1,75 @@
-{% extends 'main.html' %} 
+{% extends 'home-main.html' %} 
 {% block content%} 
-{% load cart %}
-<div class="container mt-5">
-  {% if request.user.is_customer%}
-  <h1>Customer {{request.session.cart}}loggedin</h1>
-  <div class="container d-flex">
-    {% for kitchen in queryset %} 
-    {% if not kitchen.is_blacklisted %} 
-    {%for item in kitchen.items.all%}
-    <div class="card me-3" style="width: 18rem">
-      <img src="{{item.item_image.url}}" class="card-img-top" alt="..." />
-      <div class="card-body">
-        <h5 class="card-title">{{item.item_name}}</h5>
-        <p class="card-text">{{item.item_description}}</p>
-        <p class="card-text">Rs. {{item.item_price}}</p>
-        <a href="{% url 'edit-product' item.id%}" class="btn btn-primary"
-          >Explore</a
-        >
-        
-        <button
-          data-product="{{item.id}}"
-          data-action="add"
-          class="btn btn-success update-cart"
-        >
-          Add to cart
-        </button>
-        
-      </div>
+{% load static %}
+<link rel = "stylesheet" href = "{% static 'css/main-home.css'%}"/>
+<div class="role-section">
+    <div class="join-section">
+        <img src="{% static 'images/main-home/Join Image.svg'%}">
+        <div class="join-info">
+            <h3>Hungry?</h3>
+            <h1>Find Kitchens Nearby</h1>
+            <h2>Order Local Homecooked Meals from Nearby Kitchens.</h2>
+            <a href = "customer-signup"><button class=join-btn> Join</button></a>
+        </div>
     </div>
-    {%endfor%} 
-    {% endif %} 
-    {% endfor %}
-  </div>
-  {%endif%} 
-  {% if request.user.is_kitchen%}
-  <h1>Kitchen {{request.user.first_name}} logged in</h1>
-  <div class="container d-flex">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Product Image</th>
-          <th scope="col">Product Name</th>
-          <th scope="col">Product Price</th>
-          <th scope="col">Product Description</th>
-          <th scope="col">Product Ingredients</th>
-          <th scope="col"></th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for item in queryset %}
-        <tr>
-          <th scope="row">{{forloop.counter}}</th>
-          <td>
-            <img
-              src="{{item.item_image.url}}"
-              class="card-img-top"
-              alt="..."
-              width="150"
-              height="150"
-            />
-          </td>
-          <th>{{item.item_name}}</th>
-          <td>Rs. {{item.item_price}}</td>
-          <td>{{item.item_description}}</td>
-          <td>{{item.item_ingredients}}</td>
-          <td>
-            <a href="{% url 'edit-product' item.id%}" class="btn btn-primary"
-              >Edit</a
-            >
-          </td>
-          <td>
-            <a href="{% url 'delete-product' item.id%}" class="btn btn-danger"
-              >Delete</a
-            >
-          </td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-  {%endif%}
+    <div class="register-section">
+        <img src="{% static 'images/main-home/Register Image.svg'%}">
+        <div class="register-info">
+            <h3>Chef?</h3>
+            <h1>Register As a Kitchen</h1>
+            <h2>Start your Kitchen Business from home with us.</h2>
+            <a href = "kitchen-signup"><button class=register-btn>Register</button></a>
+        </div>
+    </div>
 </div>
+    <div class="customer-steps">
+        <h4>Step by Step</h3>
+        <h1>How it Works?</h1>
+        <h3>Explore these steps and find your delivery at your door.</h3>
+        <div class="steps">
+            <div class="browse-order">
+                <h5>01</h5>
+                <img src="{% static 'images/main-home/Browse-order.svg'%}">
+                <h2>Browse And Order </h2>
+                <p div class="p-class">Browse through selection of food and place order.</p>
+            </div>
+            <div class="status">
+                <h5>02</h5>
+                <img src="{% static 'images/main-home/status.svg'%}"/>
+                <h2>Check Status </h2>
+                <p div class="p-class">Track your orders Journey from Kitchen to Doorstep.</p>
+            </div>
+            <div class="getdelivered">
+                <h5>03</h5>
+                <img src="{% static 'images/main-home/Delivery-boy.svg'%}">
+                <h2>Be A Seller </h2>
+                <p div class="p-class">Get it delivered right ar your door. Get it delivered.</p>
+            </div>
+        </div>
+    </div>
+    <div class="chef-steps">
+        <h4>Step by Step</h3>
+        <h1>Chef? Become a Partner.</h1>
+        <h3>Explore these steps and find your delivery at your door.</h3>
+        <div class="steps">
+            <div class="register-chef">
+                <h5>01</h5>
+                <img src="{% static 'images/main-home/registeracc.svg'%}">
+                <h2>Register</h2>
+                <p div class="p-class">Join our platform and register your kitchen </p>
+            </div>
+            <div class="upload-menu">
+                <h5>02</h5>
+                <img src="{% static 'images/main-home/uploadmeny.svg'%}">
+                <h2>Upload Menu </h2>
+                <p div class="p-class">Showcase your kitchen's specialties by uploading your menu.</p>
+            </div>
+            <div class="be-seller">
+                <h5>03</h5>
+                <img src="{% static 'images/main-home/seller.svg'%}">
+                <h2>Be A Seller </h2>
+                <p div class="p-class">Become a seller on our platform and offer your creations.</p>
+            </div>
+        </div>
+    </div>
 {% endblock %}

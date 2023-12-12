@@ -1,0 +1,34 @@
+{% extends 'login-signup-main.html'%}
+{% load static %}
+{% block content %}
+<div class="login-container">
+    <div class="welcome-section">
+        <div class="welcome-header">
+            <h1>Welcome to Ghar<span>Chulo</span>!</h1>
+            <p>Don't Have Account? Register as:</p>
+        </div>
+        <div class="options">
+            <a href="{%url 'customer-signup'%}" class="customer-op">
+                <img src="{% static 'images/login-image/customer.svg' %}">
+                <h2>Customer</h2>
+            </a>
+            <a href="{%url 'kitchen-signup'%}" class="customer-op">
+                <img src = "{% static 'images/login-image/kitchen.svg'%}"/>
+                <h2>Kitchen</h2>
+            </a>
+        </div>
+    </div>
+    <div class="login-section">
+        <h1>Login</h1>
+        <form method = "POST">
+            {% csrf_token %}
+            <label for="email-ad">Email Address</label>
+            <input type="email" id="email-ad" name="email" placeholder="Enter Email Address" required>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter Password" required>
+            <a href="" class="forget">Forget Password?</a>
+            <button type="submit" id="login-btn">Login</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
