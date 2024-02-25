@@ -24,14 +24,14 @@
         }
         const csrftoken = getCookie('csrftoken');
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQsKIuajMrL4S5wZijB8Li8jJhiDVTAtg&libraries=places"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDG6uWSnKSDxpacDoqreV-BY5M-EJHSyXs&libraries=places"></script>
     <link rel = "stylesheet" href = "{% static "css/kitchen-dashboard/allstyle.css" %}"/>
     <link rel = "stylesheet" href = "{% static "css/kitchen-dashboard/profilestyle.css" %}"/>
     <link rel = "stylesheet" href = "{% static "css/kitchen-dashboard/productstyle.css" %}"/>
     <link rel = "stylesheet" href = "{% static "css/kitchen-dashboard/settingstyle.css" %}"/>
 </head>
 <body>
-    {% include 'kitchen-dashboard-navbar.html'%}
+    {% include 'kitchen-dashboard/kitchen-dashboard-navbar.html'%}
     {% block content %}
 
     {% endblock content %}

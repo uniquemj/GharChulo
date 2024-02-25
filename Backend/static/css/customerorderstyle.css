@@ -6,7 +6,8 @@ body{
 
  
 .order-container{
-  height: 40vh;
+  height: 50vh;
+  overflow-y: scroll;
 }
 
 .order-container h1{
@@ -14,24 +15,27 @@ body{
   color: #DC2234;
 }
 table{
-  padding: 30px;
+  padding: 5px;
   width: 100%;
   height: 50%;
 }
 
+tbody .order-item{
+  overflow-y: scroll;
+}
 table thead{
   background-color: #db4050;
   color: white;
 }
 
 table tbody tr td{
-  padding: 30px 20px;
-  background-color: rgb(226, 226, 226);
+  padding: 20px 10px;
+  background-color: rgb(235, 235, 235);
 }
 
 
-.image{
-  width: 500px;
+td img{
+  width: 150px;
 }
 
 img.image{
@@ -46,6 +50,7 @@ thead ,tr ,th, td{
 table thead{
   border: 2px solid black;
 }
+
 
 .btn-success{
   background-color: rgb(35, 180, 35);

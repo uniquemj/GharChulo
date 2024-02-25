@@ -8,15 +8,18 @@
     <table class="table">
       <thead>
           <th scope="col">Order date</th>
+          <th scope="col">Order QRCode</th>
           <th scope="col">Product Name</th>
           <th scope="col">Quanity</th>
           <th scope="col">Price</th>
           <th scope="col">Order status</th>
       </thead>
       <tbody>
+        <div class = "order-item">
         {% for item in order %} 
           <tr>
               <td>{{item.date_ordered}}</td>
+              <td><img class = "image" src = "{{item.qrcode.qr_code.url}}"/></td>
               <td>{{item.item.item_name}}</td>
               <td>x{{item.quantity}}</td>
               <td>Rs{{item.price}}</td>
@@ -28,8 +31,8 @@
               <td><span class = "btn btn-danger">{{item.order_status}}</span></td>
               {% endif %}
           </tr>
-          
         {%endfor%}
+        </div>
       </tbody>
     </table>
   </div>

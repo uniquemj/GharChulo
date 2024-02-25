@@ -1,4 +1,4 @@
-{% extends 'kitchen-dashboard-main.html'%}
+{% extends 'kitchen-dashboard/kitchen-dashboard-main.html'%}
 
 {% block content %}
 <div class="kitchen-container">
@@ -35,8 +35,7 @@
             <td class="value"><input type="text" name = "service" value="{{kitchen.service}}"></td>
           </tr>
 
-          
-          {% if status%}
+          {% if  not status%}
           <tr class = "map-section">
             <td class="name">Address</td>
             <td id="map"></td>

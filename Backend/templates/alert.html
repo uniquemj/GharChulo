@@ -1,0 +1,17 @@
+{% load static %}
+<link rel = "stylesheet" href = "{% static 'css/alert.css'%}"/>
+{% if messages %}
+{% for message in messages %}
+<div class="custom-alert" id="customAlert">
+    <div class="alert-content">
+
+        <div class="icon-alert">
+        <p>{{message}}</p>
+        </div>
+        <button class="close-btn" onclick="closeAlert()">x</button>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+
+<script src = "{%static 'js/alert.js'%}"></script>

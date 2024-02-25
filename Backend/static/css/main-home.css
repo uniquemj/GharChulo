@@ -1,3 +1,6 @@
+*{
+    scroll-behavior: smooth;
+}
 /*Cover Section Container*/
 .cover-container {
     display: flex;

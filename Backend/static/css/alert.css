@@ -1,0 +1,52 @@
+/*Alert*/
+
+.custom-alert {
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    top: 20%;
+    right: -5%;
+    transform: translate(-50%, -50%);
+    background-color: #031633;
+    color: white;
+    border: 1px solid #084298;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width:max-content;
+    z-index: 1;
+  }
+  
+  .alert-content {
+    display: flex;
+    gap:1.5rem;
+   
+  }
+  .icon-alert {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .alert-content p {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .alert-content i {
+    color: white;
+    font-size: 20px;
+  }
+  
+  
+  .close-btn {
+    float: right;
+    cursor: pointer;
+    background: none;
+    color: white;
+    border:  none;
+    font-size: 1.5rem;
+  }
+  
+  a:hover {
+    cursor: pointer;
+  }

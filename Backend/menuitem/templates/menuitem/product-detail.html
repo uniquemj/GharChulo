@@ -1,0 +1,50 @@
+{% extends 'plain-main.html'%}
+{% load static %}
+{% block content %}
+<link rel = "stylesheet" href = "{% static 'css/product-detail.css'%}"/>
+<div class="back-btn-container">
+    <a href="" class="back-btn"><i class="fa-solid fa-less-than"></i>Back</a>
+    </div>
+    <div class="cont">
+    <div class="order-details-section">
+        <img src="{{item.item_image.url}}">
+        <div class="food-item-details">
+            <h1>{{item.item_name}}</h1>
+            <h2>{{item.item_description}}</h2>
+            <div class="kitchen-name-location">
+                <h3>{{item.added_by}}</h3>
+                <div class="kitchen-location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p>{{item.added_by.location|truncatechars:20}}</p>
+                </div>
+            </div>
+            <h4>Rs. {{item.item_price}}</h4>
+            <a href=""><button data-product="{{item.id}}" data-action="add" class="addtocartbtn update-cart">Add to cart</button></a>
+        </div>
+    </div>
+    </div>
+    <div class="search-results">
+        <h1>More from {{kitchen.kitchen_name}}</h1>
+        <h4>Satisfy your cravings with these fresh and flavoursome items.</h4>
+        <div class = "results-container">
+            {% if kitchen.items.all%}
+            {% for item in kitchen.items.all%}
+            <div class = "food-item">
+                <a href="{% url 'product' item.id%}"><img src="{{item.item_image.url}}"></a>   
+                    <div class="item-sub-section">
+                        <div class="item-name-price">
+                            <h1>{{item.item_name}}</h1>
+                            <h2>Rs.{{item.item_price}}</h2>
+                        </div>
+                        <h4>By {{item.added_by| capfirst}}</h4>
+                        <p>{{item.item_description| truncatechars:50}}</p>
+                        <button data-product="{{item.id}}" data-action="add" class="addtocart update-cart">Add to cart</button>
+                    </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <h1>Not Available</h1>
+            {% endif %}           
+        </div>                 
+    </div>    
+{% endblock content %}

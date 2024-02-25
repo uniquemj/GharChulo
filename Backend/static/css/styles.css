@@ -5,7 +5,7 @@
   box-sizing: border-box;
   margin:0;
   padding: 0;
-  
+  scroll-behavior: smooth;
 }
 
 body {
@@ -52,6 +52,8 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+
 
   /*Welcome Header*/
 .welcome-header h1{

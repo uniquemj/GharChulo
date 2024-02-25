@@ -74,7 +74,7 @@ def kitchenPage(request, name):
 def kitchenSetting(request):
     user = request.user
     kitchen = Kitchen.objects.get(user = user)
-    if kitchen.location and kitchen.latitude!=0 and kitchen.longitude!=0:
+    if not kitchen.location and kitchen.latitude!=0 and kitchen.longitude!=0:
         status = False
     else:
         status = True
@@ -86,26 +86,32 @@ def kitchenSetting(request):
         email = request.POST.get('email')
         phone_number = request.POST.get('phone_number')
         service = request.POST.get('service')
+        
         if not status:
             location = request.POST.get('location')
             latitude = request.POST.get('lat')
             longitude = request.POST.get('lng')
-            kitchen.location = location
-            kitchen.latitude = latitude
-            kitchen.longitude = longitude
-
+            kitchen_location = request.session.get('kitchen_location')
+            if location != None and latitude != None and longitude!= None:
+                print(location)
+                request.session['kitchen_location'] = {'location': location, 'lat': latitude, 'lng': longitude}
+            
         if image:
             kitchen.image = image
-        
+            
+        kitchen_location = request.session.get('kitchen_location')
+        print(kitchen_location)
         kitchen.user.email = email
         kitchen.kitchen_name = kitchen_name
         kitchen.owned_by = owned_by
         kitchen.phone_number = phone_number
         kitchen.service = service
-
-       
-
+        kitchen.location = kitchen_location['location']
+        kitchen.latitude = kitchen_location['lat']
+        kitchen.longitude = kitchen_location['lng']
+    
         kitchen.save()
+
         return redirect('setting')
 
     context = {

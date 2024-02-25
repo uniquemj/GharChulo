@@ -213,7 +213,7 @@
     height: 48.067px;
     border-radius: 9.195px 0px 0px 9.195px;
     color: #707070;
-    font-family: Poppins;
+    font-family: 'Poppins', sans-serif;
     font-size: 13.459px;
     border: none;
     font-weight: 500;
@@ -238,7 +238,7 @@
 .search-results {
     margin-left: 96px;
     margin-right: 96px;
-    font-family: poppins;
+    font-family: 'Poppins', sans-serif;
     margin-top:35px;
   }
   
@@ -279,7 +279,7 @@
     justify-content: space-between;
     margin-top: 0;
     margin-bottom: 30px;
-    font-family: poppins;
+    font-family: 'Poppins', sans-serif;
   }
 
   .food-item{
@@ -335,7 +335,7 @@ border-radius: 4.985px 4.985px 0px 0px;
   }
 
   .addtocart{
-    font-family: poppins;
+    font-family: 'Poppins', sans-serif;
     width: 245.491px;
     height: 36.133px;
     padding: 9.408px 63.033px;

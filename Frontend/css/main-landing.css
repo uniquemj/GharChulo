@@ -42,8 +42,6 @@ body {
     padding: 0;
     font-size: 21px;
     font-family: 'Poppins', sans-serif;
-
-
 }
 
 .land-logo a {
@@ -61,8 +59,6 @@ body {
 }
 
 .login-btn {
-
-
     font-family: Poppins;
     font-size: 16px;
     font-weight: 400;
@@ -214,22 +210,22 @@ padding:0;
 
 
 .join-btn, .register-btn{
-height: 29.49px;
-padding: 4.245px 40px;
-border-radius: 5.094px;
-font-family: Poppins;
-font-size: 14.019px;
-font-weight: 500;
-border: none;
-margin-top:14px;
+    height: 29.49px;
+    padding: 4.245px 40px;
+    border-radius: 5.094px;
+    font-family: Poppins;
+    font-size: 14.019px;
+    font-weight: 500;
+    border: none;
+    margin-top:14px;
 }
 .join-btn{
     background: #DC2234;
-color: #FFF;
+    color: #FFF;
 }
 .register-btn{
     background: #FFB413;
-color: black;
+    color: black;
 }
 .customer-steps{
     font-family: Poppins;
@@ -237,64 +233,60 @@ color: black;
     margin-left:96px;
     margin-right:96px;
     text-align: center;
-
-    
-    
 }
+
 .customer-steps h4{
-color: #DC2234;
-font-size: 16px;
-font-weight: 600;
-text-transform: uppercase;
-margin:0;
-padding:0;
+    color: #DC2234;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin:0;
+    padding:0;
 }
 .customer-steps h1{
     color: #000;
-font-size: 32px;
-margin:0;
-padding:0;
-font-weight: 600;
-
+    font-size: 32px;
+    margin:0;
+    padding:0;
+    font-weight: 600;
 }
 .customer-steps h3{
     color: #B0A7A7;
-font-size: 16px;
-font-weight: 400;
-margin:0;
-padding:0;
-
+    font-size: 16px;
+    font-weight: 400;
+    margin:0;
+    padding:0;
 }
 
 
 .browse-order h5, .status h5, .getdelivered h5{
     color: #BBB;
-text-align: center;
-font-weight: 700;
-text-align: center;
+    text-align: center;
+    font-weight: 700;
+    text-align: center;
 }
 
 .browse-order h2, .status h2, .getdelivered h2{
     
 text-align: center;
     color: #000;
-font-size: 24px;
-font-style: normal;
-font-weight: 600;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
 
-padding: 0;
+    padding: 0;
 
 }
 .browse-order p, .status p, .getdelivered p{
-color: #575756;
-font-family: Poppins;
-font-size: 16px;
-font-weight: 400;
-margin:0;
-padding: 0;
-text-align: center;
-width:290px;
-display: inline-block;
+    color: #575756;
+    font-family: Poppins;
+    font-size: 16px;
+    font-weight: 400;
+    margin:0;
+    padding: 0;
+    text-align: center;
+    width:290px;
+    display: inline-block;
 }
 
 .browse-order, .status, .getdelivered{

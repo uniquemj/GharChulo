@@ -8,7 +8,7 @@ function enableMarkerPlacement() {
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: 0, lng: 0 },
+        center: { lat: 27.7172, lng: 85.3240 },
         zoom: 15
     });
     
@@ -45,7 +45,10 @@ function reverseGeocode(location) {
                 let address = results[0].formatted_address;
                 let latitude = location.lat();
                 let longitude = location.lng();
-                getLocation(address, latitude, longitude)
+                let saveBtn = document.getElementById('save')
+                saveBtn.addEventListener('click',() => {
+                    getLocation(address, latitude, longitude)
+                })
             }
         } else {
             alert('Geocoder failed due to: ' + status);
@@ -65,15 +68,17 @@ const getLocation = (location, lat, lng) => {
         },
         data: {
             location: location,
-        lat: lat,
-        lng: lng
-    },
-    dataType: "json",
-    
-    failure: function () {
-        console.log("Location fetch fail Failed");
-    },
-});
+            lat: lat,
+            lng: lng
+        },
+        dataType: "json",
+        success: function (data) {
+            console.log("data: ", data);
+        },
+        failure: function () {
+            console.log("Location fetch fail Failed");
+        },
+    });
 };
 
 initMap();

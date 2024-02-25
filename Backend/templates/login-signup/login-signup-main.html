@@ -27,7 +27,8 @@
     <link rel="stylesheet" href = "{% static 'css/styles.css'%}"/>
 </head>
 <body>
-    {% include 'login-signup-navbar.html'%}
+    {% include 'login-signup/login-signup-navbar.html'%}
+    {% include 'alert.html'%}
     {% block content %}
 
     {% endblock content %}

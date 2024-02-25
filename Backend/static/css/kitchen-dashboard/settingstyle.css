@@ -7,17 +7,18 @@
     margin: 5px 20px;
     background-color: white;
     border-radius: 10px;
-    width: 50%;
+    width: 100%;
 }
 
 .map-section{
     height: 250px;
 }
+
 table{
     gap: 20px;
 }
 td{
-    padding: 20px;
+    padding: 5px;
 }
 table{
     width: 100%;
@@ -29,4 +30,8 @@ tr .value{
 #save
 {
    padding:5px 20px;
+   width: 100%;
+   background-color: rgb(38, 158, 38);
+   border: none;
+   color: white;
 }

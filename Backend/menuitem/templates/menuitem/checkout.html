@@ -11,31 +11,39 @@
     <div class="order-section">
         <h1>Order Confirmation</h1>
         
-      <form class="delivery-address" method = "POST">
-        {% csrf_token %}
-          <label for="delivery-address">Delivery Location</label>
-          <input type="text" name="address" placeholder="Enter Address" required>
-          <input type="text" name="phone_no" placeholder="Enter Contact no." required>
-          <h3 class="order-details">Order Details</h3>
-          <div class="items-container">
-              {% for item in item%}
-              <div class="item">
-                  <p>{{item.item_name}}</p>
-                  <p>x{{item|get_quantity:request.session.cart}}</p>
-                  <p class="highlight">{{item|get_item_total:request.session.cart}}</p>
-          </div>
-          {% endfor %}
-        </div>
-        <div class="subtotal">
-            <div class="label">Sub total</div>
-            <div class="price">Rs. {{item|get_cart_total:request.session.cart}}</div>
-        </div>
-        <div class="total">
-            <div class="label"><span class="highlight">Total</span></div>
-            <div class="price"><span class="highlight">Rs. {{item|get_cart_total:request.session.cart}}</span></div>
-        </div>
-        <button type="submit" class="pay-btn">PAY</button>
-    </div>
-</form>
+        <form class="delivery-address" method = "POST">
+            {% csrf_token %}
+            <label for="delivery-address">Delivery Location</label>
+            <input type="text" name="address" placeholder="Enter Address" required>
+            <input type="text" name="phone_no" placeholder="Enter Contact no." required>
+            <h3 class="order-details">Order Details</h3>
+            <div class="items-container">
+                {% for item in item%}
+                    <div class="item">
+                    <p>{{item.item_name}}</p>
+                    <p>x{{item|get_quantity:request.session.cart}}</p>
+                    <p class="highlight">{{item|get_item_total:request.session.cart}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        
+            <div class="total">
+                <div class="label"><span class="highlight">Total</span></div>
+                <input type = "number" name = "total_amount" value = {{item|get_cart_total:request.session.cart}} hidden/>
+                <div class="price"><span class="highlight">Rs. {{item|get_cart_total:request.session.cart}}</span></div>
+            </div>
+            <div class="payment__option">
+                <div class="payment-label">Payment Options</div>
+                    <div class="payment__option-button">
+                        <div class = "payment__option-button__choice">
+                            <input type = "radio" name = "payment_method" value="Khalti"/><img src = "{% static 'images/checkout/Khalti.png'%}"/>
+                            <input type = "radio" name = "payment_method" value = "Cash on Delivery"/><img src = "{% static 'images/checkout/CashonDelivery.png'%}"/>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="pay-btn">PLace Order</button>
+
+            </div>
+        </form>
 </div>
 {% endblock content %}

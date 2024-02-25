@@ -1,0 +1,203 @@
+.back-btn{
+    margin:0 96px 20px 96px;
+    display: flex;
+    gap:0.5rem;
+    align-items: center;
+    color:black; 
+    text-decoration: none;  
+    
+  }
+  .back-btn:hover{
+    text-decoration: underline;
+  }
+  
+  
+  .order-details-section{
+    margin: 0 96px 0 96px;
+    display: flex;
+    gap:3rem;
+    align-items: center;
+    border-radius: 21.255px;
+    background: #FFF;
+    width: 891.631px;
+    height: 368.768px;
+  
+    
+  }
+  /* .cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
+  
+  .order-details-section img{
+    width: 420.841px;
+    height: 368.768px;
+    border-radius: 9px 0px 0px 9px;
+  
+  }
+  
+  .food-item-details h1{
+    font-family: Poppins;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 0;
+    margin-top:-5px;
+  }
+  .food-item-details h2{
+    max-width: 318.819px;
+    font-size: 13.815px;
+    font-weight: 400;
+    margin-top:5px;
+    margin-bottom: 0;
+  }
+  .kitchen-name-location{
+    display: flex;
+    justify-content: space-between;
+    margin-top:1px;
+    margin-bottom: 0;
+  }
+  .kitchen-location{
+    display: flex;
+    gap:0.5rem;
+    align-items: center;
+  }
+  .kitchen-name-location h3{
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .kitchen-location {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .food-item-details h4{
+    font-size: 17.004px;
+  font-weight: 400;
+  margin-top: 0px;
+  }
+  
+  .addtocartbtn{
+    padding: 10px 119px;
+  border-radius: 4.251px;
+  font-size: 16px;
+  background-color: #DC2234;
+  color:white;
+  border:none;
+  font-weight: 600;
+  }
+  
+  a:hover{
+    cursor: pointer;
+  }
+  .addtocartbtn:hover{
+    cursor: pointer;
+  }
+  
+  .search-results {
+    margin-left: 96px;
+    margin-right: 96px;
+    margin-top: 60px;
+    font-family: poppins;
+  }
+  
+  
+  /*Sub-text for Food*/
+  .search-results h4 {
+    color: #646464;
+    font-size: 15.941px;
+    font-weight: 400;
+  margin-top:0;
+    
+  }
+  
+  /*Header text for Food-Results section*/
+  .search-results h1 {
+    font-size: 21.255px;
+    font-style: normal;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  
+  .search-header{
+    font-weight: 100;
+    font-size: 15px;
+    color:black;
+  }
+  /*Container*/
+    .results-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 0;
+      margin-bottom: 30px;
+      font-family: poppins;
+    }
+  
+    .food-item{
+      box-shadow: 0px 3.18819px 8.50185px 0px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
+  
+    }
+  
+    .food-item:hover{
+      background-color: #f7f7f7;
+    }
+    .food-item img{
+      margin-bottom:0;
+      width: 265.683px;
+  height: 181.727px;
+  
+  border-radius: 4.985px 4.985px 0px 0px;
+      
+    }
+  .item-sub-section{
+    padding:10px;
+  }
+    .item-name-price{
+      display: flex;
+      justify-content: space-between;
+      align-items:center;
+      margin-top:-10px;
+    }
+  
+  
+    .item-name-price h1{
+      font-size: 15px;
+      font-weight: 600;
+      padding:0;
+      margin:0;
+    }
+    .item-name-price h2{
+      font-size: 12.118px;
+      font-weight: 400;
+  
+    }
+    .food-item h4{
+      font-size: 11.5px;
+      font-weight: 500;
+    }
+  
+    .food-item p{
+      color: #626262;
+      font-size: 11.109px;
+      font-weight: 400;
+      max-width: 195.914px;
+      margin-top:-8px;
+    }
+  
+    .addtocart{
+      font-family: poppins;
+      width: 245.491px;
+      height: 36.133px;
+      padding: 9.408px 63.033px;
+      border-radius: 7.967px;
+    background: #DC2234;
+    color: white;
+    font-size: 11.508px;
+      font-weight: 500;
+    border: none;
+    }
+    .addtocart:hover{
+      cursor:pointer;
+    }

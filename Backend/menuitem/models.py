@@ -1,12 +1,22 @@
 from django.db import models
 from django.db.models.query import QuerySet
+import qrcode
+from io import BytesIO
+from django.core.files import File
+from PIL import Image, ImageDraw
 from accounts.models import *
+import json
 # Create your models here.
 
 ORDER_STATUS =[
     ('pending','pending'),
     ('in-making','in-making'),
     ('ready','ready')
+]
+
+PAYMENT_CHOICES = [
+    ('Khalti', 'Khalti'),
+    ('Cash on Delivery', 'Cash on Delivery')
 ]
     
 class Item(models.Model):
@@ -32,10 +42,36 @@ class Order(models.Model):
     is_completed = models.BooleanField(default=False)
     order_status = models.CharField(choices=ORDER_STATUS, max_length=20, default='pending')
     date_ordered = models.DateField(auto_now_add = True)
+    payment_method = models.CharField(max_length=20, choices = PAYMENT_CHOICES, default = "Cash on Delivery")
+    payment_completed = models.BooleanField(default = False)
    
     def __str__(self):
         return f'{self.item.item_name}'
     
 
 class QrCode(models.Model):
-    pass
+    order = models.OneToOneField(Order, related_name= "qrcode", on_delete = models.CASCADE)
+    order_code = models.CharField(max_length = 150, editable = False)
+    qr_code = models.ImageField(upload_to=f'QRcode', blank=True)
+
+    def __str__(self):
+        return f'{self.order.customer.fullname}'
+
+    def save(self, *args, **kwargs):
+        data = {
+            "order_code": self.order_code, 
+            "order_phoneNumber": self.order.phone_no, 
+            "Payment_Method": self.order.payment_method, 
+            "Payment_Completed": self.order.payment_completed
+        }
+
+        qrcode_image = qrcode.make(json.dumps(data))
+        canvas = Image.new('RGB', (680, 645), 'white')
+        draw = ImageDraw.Draw(canvas)
+        canvas.paste(qrcode_image)
+        fname = f'qr_code-{self.order_code[:5]}.png'
+        buffer = BytesIO()
+        canvas.save(buffer,'PNG')
+        self.qr_code.save(fname, File(buffer), save=False)
+        canvas.close()
+        super().save(*args, **kwargs)

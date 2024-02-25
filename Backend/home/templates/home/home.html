@@ -1,8 +1,8 @@
-{% extends 'home-main.html' %} 
+{% extends 'home-template/home-main.html' %} 
 {% block content%} 
 {% load static %}
 <link rel = "stylesheet" href = "{% static 'css/main-home.css'%}"/>
-<div class="role-section">
+<div id = "start" class="role-section">
     <div class="join-section">
         <img src="{% static 'images/main-home/Join Image.svg'%}">
         <div class="join-info">
@@ -22,7 +22,7 @@
         </div>
     </div>
 </div>
-    <div class="customer-steps">
+    <div id = "learn" class="customer-steps">
         <h4>Step by Step</h3>
         <h1>How it Works?</h1>
         <h3>Explore these steps and find your delivery at your door.</h3>

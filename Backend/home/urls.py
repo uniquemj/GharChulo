@@ -16,6 +16,7 @@ urlpatterns = [
     path('logout/',LogoutProcess, name = "logout"),
 
     # MenuItem URL
+    path('product/<int:pk>/', productDetail, name = "product"),
     path('add-product/', AddProduct, name = "add-product"),
     path('edit-product/<int:id>/',editProduct, name = "edit-product"),
     path('delete-product/<int:id>/', deleteProduct, name = "delete-product"),
@@ -23,6 +24,8 @@ urlpatterns = [
     path('cart/', new_cart, name = "cart"),
     path('update-item/', updateItem, name = "update-item"),
     path('checkout/', checkout, name = "checkout"),
+    path('khalti-request/', KhaltiRequestView.as_view(), name="khalti-request"),
+    path('khalti-verify/', KhaltiVerifyView.as_view(), name="khalti-verify"),
 
     path('order-detail/', OrderDetail, name = "order-detail"),
     path('kitchen-order/', KitchenOrder, name = "kitchen-order"),

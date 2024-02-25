@@ -18,7 +18,7 @@ ul li:active{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    height: 50%;
+    height: 100%;
 }
 
 header{
@@ -59,8 +59,8 @@ tbody:before {
 
 .tablefixhead {
     overflow-y: scroll; 
-    height: 60vh;
 }
+
 .tablefixhead thead th {
     position: sticky; 
     top: 0px; 
