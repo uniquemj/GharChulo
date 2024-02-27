@@ -3,6 +3,7 @@ from django.dispatch import receiver
 from django.contrib import messages
 from .models import *
 
+
 @receiver(post_save, sender=CustomUser)
 def create_customer(sender, instance, created, **kwargs):
     if created and instance.is_customer == True:

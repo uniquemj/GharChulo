@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.urls import reverse
 import json
+import uuid
+import requests
 from .utils import generateSHA256
 from .models import *
 from accounts.models import *
@@ -135,15 +137,16 @@ def checkout(request):
     if request.method == "POST":
         address = request.POST.get('address')
         phone_no = request.POST.get('phone_no')
-        payment_method = request.POST.get('payment_method')
         total_amount = request.POST.get("total_amount")
+        payment_method = request.POST.get("payment_method")
         print(total_amount)
 
         customer = request.user.customer
-        if payment_method == "Cash on Delivery":
-            payment_completed = False
-        elif payment_method =="Khalti":
+
+        if payment_method == "Khalti":
             payment_completed = True
+        elif payment_method == "Cash on Deliver":
+            payment_completed = False
 
         for item in items:
             kitchen = item.added_by
@@ -154,8 +157,8 @@ def checkout(request):
                     quantity = cart[str(item.id)],
                     price = item.item_price * cart[str(item.id)],
                     address = address,
-                    payment_method = payment_method,
                     phone_no = phone_no,
+                    payment_method = payment_method,
                     payment_completed = payment_completed
                 ) 
             order.save()  
@@ -174,29 +177,19 @@ def checkout(request):
             qr_code.save()
             request.session['cart'] = {}
         messages.info(request, "Order have been placed!!")
-        if payment_method == "Khalti":
-            return redirect(reverse("khalti-request")+"?order_total="+total_amount)
+        
         return redirect('order-detail')
-    
+
+    id = uuid.uuid4()
     context = {  
-        'item':items
+        'item':items,
+        'uuid': id
     }
 
     return render(request,'menuitem/checkout.html',context)
 
 
-class KhaltiRequestView(View):
-    def get(self,request, *args, **kwargs):
-        total_amount = request.GET.get('order_total')
-        context = {
-            'total_amount': total_amount
-        }
-        return render(request,'menuitem/khaltirequest.html', context)
 
-class KhaltiVerifyView(View):
-    def get(self, request, *args, **kwargs):
-        data = {}
-        return JsonResponse(data)
 
 @login_required(login_url='login-page')
 def OrderDetail(request):
@@ -247,3 +240,78 @@ def productDetail(request, pk):
 
 
     return render(request,'menuitem/product-detail.html',{'item': item,'kitchen': kitchen})
+
+def initkhalti(request):
+    url = "https://a.khalti.com/api/v2/epayment/initiate/"
+    return_url = request.POST.get('return_url')
+    website_url = request.POST.get('return_url')
+    amount = request.POST.get('amount')
+    purchase_order_id = request.POST.get('purchase_order_id')
+
+
+    print("url",url)
+    print("return_url",return_url)
+    print("web_url",website_url)
+    print("amount",amount)
+    print("purchase_order_id",purchase_order_id)
+    payload = json.dumps({
+        "return_url": return_url,
+        "website_url": website_url,
+        "amount": amount,
+        "purchase_order_id": purchase_order_id,
+        "purchase_order_name": "test",
+        "customer_info": {
+        "name": "Bibek Dahal",
+        "email": "test@khalti.com",
+        "phone": "9800000001"
+        }
+    })
+
+    # put your own live secet for admin
+    headers = {
+        'Authorization': 'key b885cd9d8dc04eebb59e6f12190aoo90',
+        'Content-Type': 'application/json',
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload)
+    print(json.loads(response.text))
+
+    print(response.text)
+    new_res = json.loads(response.text)
+    # print(new_res['payment_url'])
+    print(type(new_res))
+    return redirect(new_res['payment_url'])
+    return redirect("home")
+
+
+def verifyKhalti(request):
+    url = "https://a.khalti.com/api/v2/epayment/lookup/"
+    if request.method == 'GET':
+        headers = {
+            'Authorization': 'key b885cd9d8dc04eebb59e6f12190ae017',
+            'Content-Type': 'application/json',
+        }
+        pidx = request.GET.get('pidx')
+        data = json.dumps({
+            'pidx':pidx
+        })
+        res = requests.request('POST',url,headers=headers,data=data)
+        print(res)
+        print(res.text)
+
+        new_res = json.loads(res.text)
+        print(new_res)
+        
+
+        if new_res['status'] == 'Completed':
+            # user = request.user
+            # user.has_verified_dairy = True
+            # user.save()
+            # perform your db interaction logic
+            pass
+        
+        # else:
+        #     # give user a proper error message
+        #     raise BadRequest("sorry ")
+
+        return redirect('home')

@@ -13,7 +13,13 @@ urlpatterns = [
     path('customer-signup/',CustomerRegistration, name = "customer-signup"),
     path('kitchen-signup/',KitchenRegistration, name = "kitchen-signup"),
     path('login/',LoginProcess, name = "login-page"),
+    path('forgot-password/', ForgotPassword, name = "forgot-password"),
+    path('change-forgot-password/<token>/', changeForgotPassword, name = "change-forgot-password"),
     path('logout/',LogoutProcess, name = "logout"),
+    path('confirm-email/', verificationPage, name="verificationPage"),
+    path('verified-account/', verifiedPage, name="verifiedPage"),
+    path('kitchen-approval-pending/', approvalPending, name="approvalPending"),
+    path('verify/<str:token>/', verify, name="verify"),
 
     # MenuItem URL
     path('product/<int:pk>/', productDetail, name = "product"),
@@ -24,8 +30,9 @@ urlpatterns = [
     path('cart/', new_cart, name = "cart"),
     path('update-item/', updateItem, name = "update-item"),
     path('checkout/', checkout, name = "checkout"),
-    path('khalti-request/', KhaltiRequestView.as_view(), name="khalti-request"),
-    path('khalti-verify/', KhaltiVerifyView.as_view(), name="khalti-verify"),
+
+    path('initiate/',initkhalti,name="initiate"),
+    path('khalti-verify/', verifyKhalti, name="verify"),
 
     path('order-detail/', OrderDetail, name = "order-detail"),
     path('kitchen-order/', KitchenOrder, name = "kitchen-order"),

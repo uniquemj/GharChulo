@@ -1,0 +1,20 @@
+{% extends 'login-signup/login-signup-main.html'%}
+{% load static %}
+{% block content %}
+<div class="verification-container">
+    <div class = "verification-container__info">
+        <div class = "verification-container__info-main__image">
+            
+        </div>
+        <div class = "verification-container__info-text">
+            <h3 class="verification-title">Account Verification <span class = "red">Pending</span> Approval</h3>
+            <p class = "verification-body">
+                Thank you for registering! Your account is pending approval from our team. We're working to verify it promptly, and once approved, you can log in. For urgent concerns, contact our support team at ghar.chulo2023@gmail.com.
+            </p>
+        </div>
+        <div class = "verification-container__info-button">
+            <a href = "{% url 'login-page'%}" class="verification-btn">Go Back</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

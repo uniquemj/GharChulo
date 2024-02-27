@@ -1,0 +1,18 @@
+{% extends 'login-signup/login-signup-main.html'%}
+{% load static %}
+{% block content %}
+<div class="verification-container">
+    <div class = "verification-container__info">
+        <div class = "verification-container__info-main__image">
+            <img src = "{% static 'images/login-image/mail.png'%}">
+        </div>
+        <div class = "verification-container__info-text">
+            <h3 class="verification-title">Confirm your email!</h3>
+            <p class = "verification-body">Thank you for registering! Check your inbox for a verification email from us. Follow the instructions in the email to complete the verification process.</p>
+        </div>
+        <div class = "verification-container__info-button">
+            <a href = "{% url 'login-page'%}" class="verification-btn">Go Back</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
