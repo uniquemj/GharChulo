@@ -137,48 +137,110 @@ def checkout(request):
     if request.method == "POST":
         address = request.POST.get('address')
         phone_no = request.POST.get('phone_no')
-        total_amount = request.POST.get("total_amount")
         payment_method = request.POST.get("payment_method")
-        print(total_amount)
-
         customer = request.user.customer
+        
 
         if payment_method == "Khalti":
-            payment_completed = True
-        elif payment_method == "Cash on Deliver":
-            payment_completed = False
+            url = "https://a.khalti.com/api/v2/epayment/initiate/"
 
-        for item in items:
-            kitchen = item.added_by
-            order = Order(
-                    customer = customer,
-                    kitchen = kitchen,
-                    item = item,
-                    quantity = cart[str(item.id)],
-                    price = item.item_price * cart[str(item.id)],
-                    address = address,
-                    phone_no = phone_no,
-                    payment_method = payment_method,
-                    payment_completed = payment_completed
-                ) 
-            order.save()  
+            return_url = request.POST.get('return_url')
+            website_url = request.POST.get('return_url')
+            amount = request.POST.get('amount')
+            total = int(amount) * 100
+            purchase_order_id = request.POST.get('purchase_order_id')
 
-            if order.payment_completed:
-                kitchen.revenue += order.price
-                kitchen.save()
+            print("url",url)
+            print("return_url",return_url)
+            print("web_url",website_url)
+            print("amount",amount)
+            print("purchase_order_id",purchase_order_id)
+            payload = json.dumps({
+                "return_url": return_url,
+                "website_url": "http://127.0.0.1:8000",
+                "amount": str(total),
+                "purchase_order_id": purchase_order_id,
+                "purchase_order_name": "test",
+                "customer_info": {
+                "name": customer.fullname,
+                "email": customer.user.email,
+                "phone": customer.phone_number
+                }
+            })
+            headers = {
+                'Authorization': 'key 5ea4ffdb488c40388a4239c6a2f0c7d7',
+                'Content-Type': 'application/json',
+            }
 
-            order_val = {"order_id": order.id, "order_item": order.item, "order_kitchen": order.kitchen, "order_customer": order.customer, "order_address": order.address, "order_phoneNumber": order.phone_no}
-            hash_val = generateSHA256(str(order_val))
+            response = requests.request("POST", url, headers=headers, data=payload)
+            print(response.text)
 
-            qr_code = QrCode(
-                order = order,
-                order_code = hash_val
-            )
-            qr_code.save()
-            request.session['cart'] = {}
-        messages.info(request, "Order have been placed!!")
+            new_res = json.loads(response.text)
+            print(new_res)
+            
+
+            order, created = Order.objects.get_or_create(customer = customer, payment_method = payment_method)
+            for item in items:
+                kitchen = item.added_by
+                orderItem = OrderItem(
+                        order = order,
+                        customer = customer,
+                        kitchen = kitchen,
+                        item = item,
+                        quantity = cart[str(item.id)],
+                        price = item.item_price * cart[str(item.id)],
+                        address = address,
+                        phone_no = phone_no,
+                        payment_method = payment_method,
+                        )       
+                orderItem.save()  
+
+
+                order_val = {"order_id": orderItem.id, "order_item": orderItem.item, "order_kitchen": orderItem.kitchen, "order_customer": orderItem.customer, "order_address": orderItem.address, "order_phoneNumber": orderItem.phone_no}
+                hash_val = generateSHA256(str(order_val))
+
+                qr_code = QrCode(
+                    order = order,
+                    orderItem = orderItem,
+                    order_code = hash_val
+                )
+                qr_code.save()
+            
+            return redirect(new_res['payment_url'])
         
-        return redirect('order-detail')
+        elif payment_method == "Cash on Delivery":
+            print(payment_method)
+
+            order, created = Order.objects.get_or_create(customer = customer, payment_method = payment_method)
+            for item in items:
+                kitchen = item.added_by
+                orderItem = OrderItem(
+                        order = order,
+                        customer = customer,
+                        kitchen = kitchen,
+                        item = item,
+                        quantity = cart[str(item.id)],
+                        price = item.item_price * cart[str(item.id)],
+                        address = address,
+                        phone_no = phone_no,
+                        payment_method = payment_method,
+                    ) 
+                orderItem.save()  
+
+
+                order_val = {"order_id": orderItem.id, "order_item": orderItem.item, "order_kitchen": orderItem.kitchen, "order_customer": orderItem.customer, "order_address": orderItem.address, "order_phoneNumber": orderItem.phone_no}
+                hash_val = generateSHA256(str(order_val))
+
+                qr_code = QrCode(
+                    order = order,
+                    orderItem = orderItem,
+                    order_code = hash_val
+                )
+                qr_code.save()
+
+            request.session['cart'] = {}
+            return redirect('order-detail')
+            
 
     id = uuid.uuid4()
     context = {  
@@ -193,10 +255,10 @@ def checkout(request):
 
 @login_required(login_url='login-page')
 def OrderDetail(request):
-    order = Order.objects.filter(customer = request.user.customer).order_by('-date_ordered')
+    orderItem = OrderItem.objects.filter(customer = request.user.customer).order_by('-date_ordered')
 
     context = {
-        'order':order
+        'order':orderItem
     }
 
     return render(request,'menuitem/customer-order.html',context)
@@ -208,8 +270,8 @@ def KitchenOrder(request):
         return redirect('login-page')
     
     kitchen = Kitchen.objects.get(user = request.user)
-    order = Order.objects.filter(kitchen = kitchen, is_completed = False)
-    order_completed = Order.objects.filter(kitchen = kitchen, is_completed = True) 
+    order = OrderItem.objects.filter(kitchen = kitchen, is_completed = False)
+    order_completed = OrderItem.objects.filter(kitchen = kitchen, is_completed = True) 
     context = {
         'order':order,
         'order_completed':order_completed,
@@ -224,7 +286,7 @@ def updateOrder(request):
     order_status = request.POST.get('order_status')
     is_completed = request.POST.get('is_completed')
 
-    order = Order.objects.get(id = orderId)
+    order = OrderItem.objects.get(id = orderId)
         
     if action == "save":
         order.order_status = order_status
@@ -241,77 +303,31 @@ def productDetail(request, pk):
 
     return render(request,'menuitem/product-detail.html',{'item': item,'kitchen': kitchen})
 
-def initkhalti(request):
-    url = "https://a.khalti.com/api/v2/epayment/initiate/"
-    return_url = request.POST.get('return_url')
-    website_url = request.POST.get('return_url')
-    amount = request.POST.get('amount')
-    purchase_order_id = request.POST.get('purchase_order_id')
-
-
-    print("url",url)
-    print("return_url",return_url)
-    print("web_url",website_url)
-    print("amount",amount)
-    print("purchase_order_id",purchase_order_id)
-    payload = json.dumps({
-        "return_url": return_url,
-        "website_url": website_url,
-        "amount": amount,
-        "purchase_order_id": purchase_order_id,
-        "purchase_order_name": "test",
-        "customer_info": {
-        "name": "Bibek Dahal",
-        "email": "test@khalti.com",
-        "phone": "9800000001"
-        }
-    })
-
-    # put your own live secet for admin
-    headers = {
-        'Authorization': 'key b885cd9d8dc04eebb59e6f12190aoo90',
-        'Content-Type': 'application/json',
-    }
-
-    response = requests.request("POST", url, headers=headers, data=payload)
-    print(json.loads(response.text))
-
-    print(response.text)
-    new_res = json.loads(response.text)
-    # print(new_res['payment_url'])
-    print(type(new_res))
-    return redirect(new_res['payment_url'])
-    return redirect("home")
+   
 
 
 def verifyKhalti(request):
     url = "https://a.khalti.com/api/v2/epayment/lookup/"
-    if request.method == 'GET':
-        headers = {
-            'Authorization': 'key b885cd9d8dc04eebb59e6f12190ae017',
-            'Content-Type': 'application/json',
-        }
-        pidx = request.GET.get('pidx')
-        data = json.dumps({
-            'pidx':pidx
-        })
-        res = requests.request('POST',url,headers=headers,data=data)
-        print(res)
-        print(res.text)
+    pidx = request.GET.get('pidx')
+    headers = {
+        'Authorization': 'key 5ea4ffdb488c40388a4239c6a2f0c7d7',
+        'Content-Type': 'application/json',
+    }
+    payload = json.dumps({
+        'pidx': pidx
+    })
 
-        new_res = json.loads(res.text)
-        print(new_res)
-        
+    response = requests.request("POST", url, headers=headers, data=payload)
+    print(response.text)
 
-        if new_res['status'] == 'Completed':
-            # user = request.user
-            # user.has_verified_dairy = True
-            # user.save()
-            # perform your db interaction logic
-            pass
-        
-        # else:
-        #     # give user a proper error message
-        #     raise BadRequest("sorry ")
+    new_res = json.loads(response.text)
+    print(new_res)
 
-        return redirect('home')
+    if new_res['status'] == 'Completed':
+        customer = request.user.customer
+        order = Order.objects.get(customer = customer)
+        order.payment_completed = True
+        request.session['cart'] = {}
+        order.save()
+
+    return redirect('order-detail')

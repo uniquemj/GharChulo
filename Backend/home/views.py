@@ -23,6 +23,7 @@ def home(request):
         latitude = location['lat']
         longitude = location['lng']
         kitchen = getNearestKitchen(latitude, longitude)
+    
 
     request.session['location'] = {'lat': lat, 'lng': lng}
 
@@ -47,6 +48,8 @@ def home(request):
     return render(request,'home/new_home.html',{'page':page,'queryset':queryset,'items':items, 'query':query})
 
 def kitchendashboard(request):
+    if not request.user.is_authenticated:
+        return render(request,'home/home.html')
     if not request.user.is_kitchen:
         return redirect('login-page')
     kitchen = Kitchen.objects.get(user = request.user)
@@ -56,6 +59,8 @@ def kitchendashboard(request):
     return render(request,'home/kitchen-dashboard-profile.html', context) 
 
 def kitchenDashboardProduct(request):
+    if not request.user.is_authenticated:
+        return render(request,'home/home.html')
     if not request.user.is_kitchen:
         return redirect('login-page')
     kitchen = Kitchen.objects.get(user = request.user)
@@ -63,6 +68,8 @@ def kitchenDashboardProduct(request):
     return render(request,'home/kitchen-dashboard-product.html',{'queryset':queryset,})
 
 def kitchenPage(request, name):
+    if not request.user.is_authenticated:
+        return render(request,'home/home.html')
     page = "kitchenPage"
     kitchen = Kitchen.objects.get(kitchen_name = name)
     context = {
@@ -72,6 +79,10 @@ def kitchenPage(request, name):
     return render(request,'home/kitchen-page.html', context)
 
 def kitchenSetting(request):
+    if not request.user.is_authenticated:
+        return render(request,'home/home.html')
+    if not request.user.is_kitchen:
+        return redirect('login-page')
     user = request.user
     kitchen = Kitchen.objects.get(user = user)
     if not kitchen.location and kitchen.latitude!=0 and kitchen.longitude!=0:
@@ -100,15 +111,18 @@ def kitchenSetting(request):
             kitchen.image = image
             
         kitchen_location = request.session.get('kitchen_location')
-        print(kitchen_location)
-        kitchen.user.email = email
-        kitchen.kitchen_name = kitchen_name
-        kitchen.owned_by = owned_by
-        kitchen.phone_number = phone_number
-        kitchen.service = service
-        kitchen.location = kitchen_location['location']
-        kitchen.latitude = kitchen_location['lat']
-        kitchen.longitude = kitchen_location['lng']
+        
+        if kitchen_location:
+            kitchen.user.email = email
+            kitchen.kitchen_name = kitchen_name
+            kitchen.owned_by = owned_by
+            kitchen.phone_number = phone_number
+            kitchen.service = service
+            kitchen.location = kitchen_location['location']
+            kitchen.latitude = kitchen_location['lat']
+            kitchen.longitude = kitchen_location['lng']
+        else:
+            return redirect('setting')
     
         kitchen.save()
 

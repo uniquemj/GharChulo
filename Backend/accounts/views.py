@@ -14,6 +14,7 @@ def CustomerRegistration(request):
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         email = request.POST.get('email')
+        phone_number = request.POST.get('phone_number')
         password = request.POST.get('password')
         confirm_password = request.POST.get('password2')
 
@@ -33,7 +34,12 @@ def CustomerRegistration(request):
             except ValidationError:
                 messages.error(request, 'Invalid email format')
                 return redirect('customer-signup')
-
+             #Phone Number Validation
+            try:
+                validate_phone_number(phone_number)
+            except ValidationError:
+                messages.error(request, 'Phone number should be 10 digit number and starts with 98. .')
+                return redirect('kitchen-signup')
             #Password Validation
             try:
                 validate_strong_password(password)

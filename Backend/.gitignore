@@ -1,4 +1,5 @@
 venv
+Backend/media
 db.sqlite3
 migrations
 .env

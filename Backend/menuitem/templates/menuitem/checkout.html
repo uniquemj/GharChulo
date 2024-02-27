@@ -33,26 +33,23 @@
                 <div class="price"><span class="highlight">Rs. {{item|get_cart_total:request.session.cart}}</span></div>
             </div>
             <div class="payment__option">
-                <div class="payment-label">Payment Options</div>
+                <div class="payment-label">Payment via.</div>
                     <div class="payment__option-button">
                         <div class = "payment__option-button__choice">
-                            {% comment %} <form method ="POST" action = "{% url 'initiate' %}">
-                                {% csrf_token %} 
+                            {% comment %} <form  method = "POST">
+                                {% csrf_token %}  {% endcomment %}
                                     <input type="hidden" name="purchase_order_id" value="{{uuid}}"  id="pid">
                                     <input type="hidden" name="amount" value="{{item|get_cart_total:request.session.cart}}" id="amt">
-                                    <button value = "Khalti">Pay with Khalti</button>
-                                    <input type = "hidden" name = "payment_method" value = "Khalti"/>
-                                    <input type="hidden" name="return_url" value="http://127.0.0.1:8000/verify">
-                            </form>
-                            <form method ="POST">
-                                {% csrf_token %} 
-                                   
-                                    <button value = "Khalti">Cash on Delivery</button>
-                                    <input type = "hidden" name = "payment_method" value = "Cash on Delivery"/>
-                                   
-                            </form> {% endcomment %}
-                            <input type = "radio" name = "payment_method" value="Khalti"/><img src = "{% static 'images/checkout/Khalti.png'%}"/>
-                            <input type = "radio" name = "payment_method" value = "Cash on Delivery"/><img src = "{% static 'images/checkout/CashonDelivery.png'%}"/>
+                                    
+                                    <input type="hidden" name="return_url" value="http://127.0.0.1:8000/khalti-verify">
+                            {% comment %} </form> {% endcomment %}
+
+                            {% comment %} <form method ="POST"> {% endcomment %}
+                                {% comment %} {% csrf_token %}  {% endcomment %}
+                                {% comment %} <input type = "submit" class = "btn-cod" name = "payment_method" value = "Cash on Delivery"/>  {% endcomment %}
+                            {% comment %} </form> {% endcomment %}
+                             <input type = "radio" name = "payment_method" value="Khalti"/><img src = "{% static 'images/checkout/Khalti.png'%}"/>
+                            <input type = "radio" name = "payment_method" value = "Cash on Delivery"/><img src = "{% static 'images/checkout/CashonDelivery.png'%}"/> 
                         </div>
                     </div>
                 </div>

@@ -31,7 +31,7 @@ urlpatterns = [
     path('update-item/', updateItem, name = "update-item"),
     path('checkout/', checkout, name = "checkout"),
 
-    path('initiate/',initkhalti,name="initiate"),
+  
     path('khalti-verify/', verifyKhalti, name="verify"),
 
     path('order-detail/', OrderDetail, name = "order-detail"),

@@ -10,7 +10,7 @@
             {% if request.user.is_authenticated %}
             <div class="land-nav-icons">
                 <div class="notification-dropdown">
-                    <button class="dropbtn"><img src = "{% static 'images/home-image/bell.svg'%}"/></button>
+                    {% comment %} <button class="dropbtn"><img src = "{% static 'images/home-image/bell.svg'%}"/></button> {% endcomment %}
                     <div class="notification-content">
                         <h3>Notifications</h3>
                         <p>Your Order has been delivered.</p>

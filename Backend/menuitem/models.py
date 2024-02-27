@@ -6,6 +6,7 @@ from django.core.files import File
 from PIL import Image, ImageDraw
 from accounts.models import *
 import json
+import uuid
 # Create your models here.
 
 ORDER_STATUS =[
@@ -30,8 +31,17 @@ class Item(models.Model):
     def __str__(self):
         return f'{self.item_name} --> {self.added_by.kitchen_name}'
 
-
 class Order(models.Model):
+    customer = models.ForeignKey(Customer, on_delete = models.CASCADE)
+    order_id =  models.UUIDField( primary_key = True, default = uuid.uuid4, editable = False) 
+    payment_method = models.CharField(max_length=20, choices = PAYMENT_CHOICES, default = "Cash on Delivery")
+    payment_completed = models.BooleanField(default = False)
+
+    def __str__(self):
+        return f'{self.order_id}'
+
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, on_delete = models.CASCADE)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
     kitchen = models.ForeignKey(Kitchen, related_name='orders',on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
@@ -50,7 +60,8 @@ class Order(models.Model):
     
 
 class QrCode(models.Model):
-    order = models.OneToOneField(Order, related_name= "qrcode", on_delete = models.CASCADE)
+    order = models.ForeignKey(Order, related_name = "orderqr", on_delete = models.CASCADE)
+    orderItem = models.OneToOneField(OrderItem, related_name= "qrcode", on_delete = models.CASCADE)
     order_code = models.CharField(max_length = 150, editable = False)
     qr_code = models.ImageField(upload_to=f'QRcode', blank=True)
 
@@ -59,8 +70,8 @@ class QrCode(models.Model):
 
     def save(self, *args, **kwargs):
         data = {
-            "order_code": self.order_code, 
-            "order_phoneNumber": self.order.phone_no, 
+            "order_product_code": self.order_code, 
+            "order_phoneNumber": self.orderItem.phone_no, 
             "Payment_Method": self.order.payment_method, 
             "Payment_Completed": self.order.payment_completed
         }
