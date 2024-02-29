@@ -52,6 +52,10 @@ def CustomerRegistration(request):
             user.save()
             send_email_token(user.email, user.email_token)
 
+            customer = Customer.objects.get(user = user)
+            customer.phone_number = phone_number
+            customer.save()
+            
             return redirect('verificationPage')
         else:
             messages.error(request, "Password and Cofirm Password Doesn't match.")

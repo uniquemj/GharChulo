@@ -37,7 +37,7 @@ class Kitchen(models.Model):
     kitchen_name = models.CharField(max_length=150,null=True, blank=True, validators=[validate_name])
     owned_by = models.CharField(max_length=100, null=True, blank=True, validators=[validate_name])
     image = models.ImageField(upload_to='profile/kitchen',default='profile/kitchen/profile.svg', null=True, blank=True)
-    phone_number = models.CharField(max_length=10,null=True, blank=True, validators=[validate_phone_number  ])
+    phone_number = models.CharField(max_length=10,null=True, blank=True, validators=[validate_phone_number ])
     menu = models.FileField(upload_to = f"kitchen-menu/")
     service = models.CharField(max_length=250, null=True, blank=True)
     location = models.TextField(null=True, blank=True)

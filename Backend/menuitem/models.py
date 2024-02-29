@@ -72,8 +72,7 @@ class QrCode(models.Model):
         data = {
             "order_product_code": self.order_code, 
             "order_phoneNumber": self.orderItem.phone_no, 
-            "Payment_Method": self.order.payment_method, 
-            "Payment_Completed": self.order.payment_completed
+            "Payment_Method": self.order.payment_method
         }
 
         qrcode_image = qrcode.make(json.dumps(data))

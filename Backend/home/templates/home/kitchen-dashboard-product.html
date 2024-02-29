@@ -40,7 +40,7 @@
                         <div class="imgcover"><img src = "{{item.item_image.url}}"/></div>
                         <p>{{item.item_name}}</p>
                         <p>Rs. {{item.item_price}}</p>
-                        <p>{{item.item_description|truncatechars:50}}</p>
+                        <p>{{item.item_description|truncatechars:20}}</p>
                         <div class = "item-table-button">
                              <a href="{% url 'edit-product' item.id%}" class="success-btn">Edit</a><a href="{% url 'delete-product' item.id%}" class="danger-btn">Delete</a>
                         </div>
