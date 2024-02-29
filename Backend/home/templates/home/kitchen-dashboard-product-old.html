@@ -1,0 +1,42 @@
+{% extends 'kitchen-dashboard/kitchen-dashboard-main.html' %} 
+{% block content%} 
+{% load cart %}
+
+<div class="myproducts">
+  <header>
+      <h2>My Products</h2>
+      <a href = "{% url 'add-product'%}" id="addproduct">Add Product</a>
+  </header>
+  <div class="tablefixhead">
+    <table>
+      <thead>
+        <tr>
+          <th>Product Image</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Edit/Delete</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for item in queryset %}
+        <tr class="item item-one">
+          <td>
+            <div class="imgcover"><img src = "{{item.item_image.url}}"/></div>
+          </td>
+          <td>{{item.item_name}}</td>
+          <td>Rs. {{item.item_price}}</td>
+          <td>{{item.item_description|truncatechars:50}}</td>
+          <td><a href="{% url 'edit-product' item.id%}" class="success">Edit</a><a href="{% url 'delete-product' item.id%}" class="danger">Delete</a></td>
+        </tr>
+
+        {% endfor %}
+
+
+      </tbody>
+    </table>
+
+  </div>
+</div>
+{% endblock %}

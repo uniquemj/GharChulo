@@ -1,117 +1,116 @@
-{% extends 'kitchen-dashboard/kitchen-dashboard-main.html' %} {% block content %}
+{% extends 'kitchen-dashboard/kitchen-dashboard-main.html' %} {% block content%}
+{% load cart %}
+<div class="product__container">
+  <div class="product__container-user">
+    <div class="product__container-user__info">
+      <div class="product__container-user__info-image">
+        <img src="{{user.image.url}}" id="profile-img" alt="" />
+      </div>
+      <div class="product__container-user__info-detail">
+        <h3>{{user.kitchen_name}}</h3>
+        <p>{{user.phone_number}}</p>
+      </div>
+    </div>
+  </div>
 
-<div class = "order-list">
-<div class="myproducts">
-  <header>
-    <h2>Order Details</h2>
-  </header>
-  <div class="tablefixhead">
-    <table>
-    <thead>
-    <tr>
-      <th>Product Image</th>
-      <th>Name</th>
-      <th>Order Date</th>
-      <th>Qty</th>
-      <th>Price</th>
-      <th>Address</th>
-      <th>Contact Info</th>
-      <th>Status</th>
-      <th>Completed</th>
-      <th>Action</th>
-    </tr>
-    </thead>
-    {% for item in order%} 
-    <tbody>
+  <div class="product__container-item">
+    <div class="product_container-item__heading">
+      <div class="menu__title">
+        <h2>Orders</h2>
+      </div>
+      <div class="menu__addItem"></div>
+    </div>
 
-    <tr class="item item-one">
-      <td>
-        <div class="imgcover"><img src="{{item.item.item_image.url}}"/></div>
-      </td>
-      <td>{{item.item.item_name}}</td>
-      <td>{{item.date_ordered}}</td>
-      <td>x{{item.quantity}}</td>
-      <td>Rs{{item.price}}</td>
-      <td>{{item.address}}</td>
-      <td>{{item.phone_no}}</td>
-      <td>
-        {% if not item.is_completed %}
-          <select name = "order_status" id="status">
-              {% if item.order_status == "pending"%}
-                  <option class="danger" value = "pending" selected>Pending</option>
-                  <option class="warning" value = "in-making" >In-Making</option>
-                  <option class="success" value = "ready">Ready</option>
-              {% elif item.order_status == "in-making" %}
-                  <option class="danger" value = "pending">Pending</option>
-                  <option class="warning" value = "in-making" selected>In-Making</option>
-                  <option class="success" value = "ready">Ready</option>
-              {% elif item.order_status == "ready"%}
-                  <option class="danger" value = "pending">Pending</option>
-                  <option class="warning" value = "in-making" >In-Making</option>
-                  <option class="success" value = "ready" selected>Ready</option>
-              {% endif %}
-          </select>
-        {% else %}
-          <span class = "success">{{item.order_status|capfirst}}</span>
-        {% endif %}
-      </td>
-      <td>
-        {% if item.is_completed%}
-            <input type="checkbox" name = "is_completed" checked/>
-        {% else %}
-            <input type="checkbox" name = "is_completed" />
-        {% endif %}
-      </td>
-      <td><button data-order = "{{item.id}}" data-action = "save"  class="success save-btn">Save</button></td>
-    </tr>
+    <div class="product__container-item__container">
+      <div class="product__container-item__container-table">
+        <div class="order-product__container-item__contianer-table__title">
+            <h3>Order Date</h3>
+            <h3>Name</h3>
+            <h3>Qty</h3>
+            <h3>Price</h3>
+            <h3>Address</h3>
+            <h3>Contact Info</h3>
+            <h3>Status</h3>
+            <h3>Completed</h3>
+            <h3>Action</h3>
+        </div>
+        <div class="product__container-item__contianer-table__body">
+            {% for item in order%} 
+                <div class="order-item-container">
+                    <p>{{item.date_ordered}}</p>
+                    <p>{{item.item.item_name}}</p>
+                    <p>x{{item.quantity}}</p>
+                    <p>Rs{{item.price}}</p>
+                    <p>{{item.address}}</p>
+                    <p>{{item.phone_no}}</p>
+                    <div>
+                        {% if not item.is_completed %}
+                            <select name = "order_status" id="status">
+                                {% if item.order_status == "pending"%}
+                                    <option class="danger" value = "pending" selected>Pending</option>
+                                    <option class="warning" value = "in-making" >In-Making</option>
+                                    <option class="success" value = "ready">Ready</option>
+                                {% elif item.order_status == "in-making" %}
+                                    <option class="danger" value = "pending">Pending</option>
+                                    <option class="warning" value = "in-making" selected>In-Making</option>
+                                    <option class="success" value = "ready">Ready</option>
+                                {% elif item.order_status == "ready"%}
+                                    <option class="danger" value = "pending">Pending</option>
+                                    <option class="warning" value = "in-making" >In-Making</option>
+                                    <option class="success" value = "ready" selected>Ready</option>
+                                {% endif %}
+                            </select>
+                        {% else %}
+                            <span class = "success">{{item.order_status|capfirst}}</span>
+                        {% endif %}
+                    </div>
+                    <div>
+                        {% if item.is_completed%}
+                            <input type="checkbox" name = "is_completed" checked/>
+                        {% else %}
+                            <input type="checkbox" name = "is_completed" />
+                        {% endif %}
+                    </div>
+                    <button data-order = "{{item.id}}" data-action = "save"  class="success save-btn">Save</button>
+                </div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="product__container-item">
+    <div class="product_container-item__heading">
+      <div class="menu__title">
+        <h2>Completed Order</h2>
+      </div>
+      <div class="menu__addItem"></div>
+    </div>
 
-    </tbody>
-    {% endfor %}
-
-
-    </table>
-
+    <div class="product__container-item__container">
+      <div class="product__container-item__container-table">
+        <div class="order-product__container-item__contianer-table__title">
+            <h3>Product Image</h3>
+            <h3>Name</h3>
+            <h3>Order Date</h3>
+            <h3>Qty</h3>
+            <h3>Price</h3>
+            <h3>Address</h3>
+            <h3>Contact Info</h3>
+        </div>
+        <div class="product__container-item__contianer-table__body">
+            {% for item in order_completed%} 
+                <div class="order-item-container">
+                    <p>{{item.item.item_name}}</p>
+                    <p>{{item.date_ordered}}</p>
+                    <p>x{{item.quantity}}</p>
+                    <p>Rs{{item.price}}</p>
+                    <p>{{item.address}}</p>
+                    <p>{{item.phone_no}}</p>
+                </div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-<div class="myproducts">
-  <header>
-    <h2>Completed Order</h2>
-  </header>
-  <div class="tablefixhead">
-    <table>
-    <thead>
-    <tr>
-      <th>Product Image</th>
-      <th>Name</th>
-      <th>Order Date</th>
-      <th>Qty</th>
-      <th>Price</th>
-      <th>Address</th>
-      <th>Contact Info</th>
-    </tr>
-    </thead>
-    {% for item in order_completed%} 
-    <tbody>
-
-    <tr class="item item-one">
-      <td>
-        <div class="imgcover"><img src="{{item.item.item_image.url}}"/></div>
-      </td>
-      <td>{{item.item.item_name}}</td>
-      <td>{{item.date_ordered}}</td>
-      <td>x{{item.quantity}}</td>
-      <td>Rs{{item.price}}</td>
-      <td>{{item.address}}</td>
-      <td>{{item.phone_no}}</td>
-    </tr>
-
-    </tbody>
-    {% endfor %}
-
-
-    </table>
-
-  </div>
-</div>
-</div>
-{% endblock content%}
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends 'kitchen-dashboard/kitchen-dashboard-main.html' %} {% block content %}
+
+<div class = "order-list">
+<div class="myproducts">
+  <header>
+    <h2>Order Details</h2>
+  </header>
+  <div class="tablefixhead">
+    <table>
+    <thead>
+    <tr>
+      <th>Product Image</th>
+      <th>Name</th>
+      <th>Order Date</th>
+      <th>Qty</th>
+      <th>Price</th>
+      <th>Address</th>
+      <th>Contact Info</th>
+      <th>Status</th>
+      <th>Completed</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    {% for item in order%} 
+    <tbody>
+
+    <tr class="item item-one">
+      <td>
+        <div class="imgcover"><img src="{{item.item.item_image.url}}"/></div>
+      </td>
+      <td>{{item.item.item_name}}</td>
+      <td>{{item.date_ordered}}</td>
+      <td>x{{item.quantity}}</td>
+      <td>Rs{{item.price}}</td>
+      <td>{{item.address}}</td>
+      <td>{{item.phone_no}}</td>
+      <td>
+        {% if not item.is_completed %}
+          <select name = "order_status" id="status">
+              {% if item.order_status == "pending"%}
+                  <option class="danger" value = "pending" selected>Pending</option>
+                  <option class="warning" value = "in-making" >In-Making</option>
+                  <option class="success" value = "ready">Ready</option>
+              {% elif item.order_status == "in-making" %}
+                  <option class="danger" value = "pending">Pending</option>
+                  <option class="warning" value = "in-making" selected>In-Making</option>
+                  <option class="success" value = "ready">Ready</option>
+              {% elif item.order_status == "ready"%}
+                  <option class="danger" value = "pending">Pending</option>
+                  <option class="warning" value = "in-making" >In-Making</option>
+                  <option class="success" value = "ready" selected>Ready</option>
+              {% endif %}
+          </select>
+        {% else %}
+          <span class = "success">{{item.order_status|capfirst}}</span>
+        {% endif %}
+      </td>
+      <td>
+        {% if item.is_completed%}
+            <input type="checkbox" name = "is_completed" checked/>
+        {% else %}
+            <input type="checkbox" name = "is_completed" />
+        {% endif %}
+      </td>
+      <td><button data-order = "{{item.id}}" data-action = "save"  class="success save-btn">Save</button></td>
+    </tr>
+
+    </tbody>
+    {% endfor %}
+
+
+    </table>
+
+  </div>
+</div>
+<div class="myproducts">
+  <header>
+    <h2>Completed Order</h2>
+  </header>
+  <div class="tablefixhead">
+    <table>
+    <thead>
+    <tr>
+      <th>Product Image</th>
+      <th>Name</th>
+      <th>Order Date</th>
+      <th>Qty</th>
+      <th>Price</th>
+      <th>Address</th>
+      <th>Contact Info</th>
+    </tr>
+    </thead>
+    {% for item in order_completed%} 
+    <tbody>
+
+    <tr class="item item-one">
+      <td>
+        <div class="imgcover"><img src="{{item.item.item_image.url}}"/></div>
+      </td>
+      <td>{{item.item.item_name}}</td>
+      <td>{{item.date_ordered}}</td>
+      <td>x{{item.quantity}}</td>
+      <td>Rs{{item.price}}</td>
+      <td>{{item.address}}</td>
+      <td>{{item.phone_no}}</td>
+    </tr>
+
+    </tbody>
+    {% endfor %}
+
+
+    </table>
+
+  </div>
+</div>
+</div>
+{% endblock content%}

@@ -7,7 +7,7 @@
         <a href="{%url 'home'%}"><p>Ghar<span class="chulo-logo">Chulo</span></p></a>
     </div>
     <div class="nav-icons">
-        <div class="notification-dropdown">
+        {% comment %} <div class="notification-dropdown">
             <button class="dropbtn"><img src = "{% static 'images/home-image/bell.svg'%}"/></button>
             <div class="notification-content">
                 <h3>Notifications</h3>
@@ -15,7 +15,7 @@
                 <p>Your Order is ready to be delivered.</p>
                 <p>Your Order has been placed.</p>
             </div>
-        </div>
+        </div> {% endcomment %}
         
         {% if request.session.cart %}
           <a href="{% url 'cart'%}"><img src = "{% static 'images/home-image/cart.svg'%}"/><span> ({{request.session.cart|get_total_quanity}})</span></a>

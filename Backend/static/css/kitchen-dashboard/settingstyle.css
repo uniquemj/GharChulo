@@ -1,5 +1,3 @@
-
-
 .kitchen-container{
     border: 2px solid white;
     height: 100%;
@@ -27,6 +25,10 @@ tr .value{
 
     margin-left: auto;
 }
+.value input{
+    width: 100%;
+    padding: 0.5rem 1rem;
+}
 #save
 {
    padding:5px 20px;
@@ -34,4 +36,10 @@ tr .value{
    background-color: rgb(38, 158, 38);
    border: none;
    color: white;
+}
+
+.hint{
+    font-size: 1rem;
+    color: #DC2234;
+
 }

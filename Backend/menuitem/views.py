@@ -34,7 +34,6 @@ def AddProduct(request):
                 item_price = item_price,
                 item_image = item_image
             )
-            messages.success(request,'Product Added !!')
             return redirect('kitchen-product')
         
         else:
@@ -64,7 +63,6 @@ def editProduct(request, id):
         item.item_ingredients = item_ingredients
 
         item.save()
-        messages.success(request,'Product Updated!!!')
         return redirect('kitchen-product')
     
     return render(request,'menuitem/edit-product.html',{'item': item})
@@ -107,13 +105,11 @@ def updateItem(request):
         quantity = cart.get(productId)
 
         if action == "add":
-            messages.info(request,"Item Added to Cart!")
             if quantity:
                 cart[productId] = quantity + 1
             else:
                 cart[productId] = 1 
         elif action =="remove":
-            messages.info(request,"Item Removed to Cart!")
             if quantity<=1:
                 cart.pop(productId)
             else:
@@ -174,6 +170,7 @@ def checkout(request):
 
             response = requests.request("POST", url, headers=headers, data=payload)
             print(response.text)
+            print(response.status_code)
 
             new_res = json.loads(response.text)
             print(new_res)
@@ -273,6 +270,7 @@ def KitchenOrder(request):
     order = OrderItem.objects.filter(kitchen = kitchen, is_completed = False)
     order_completed = OrderItem.objects.filter(kitchen = kitchen, is_completed = True) 
     context = {
+        'user': kitchen,
         'order':order,
         'order_completed':order_completed,
 
@@ -323,11 +321,14 @@ def verifyKhalti(request):
     new_res = json.loads(response.text)
     print(new_res)
 
-    if new_res['status'] == 'Completed':
-        customer = request.user.customer
-        order = Order.objects.get(customer = customer)
-        order.payment_completed = True
-        request.session['cart'] = {}
-        order.save()
+    if new_res:
+        if new_res['status'] == 'Completed':
+            customer = request.user.customer
+            order = Order.objects.get(customer = customer)
+            order.payment_completed = True
+            request.session['cart'] = {}
+            order.save()
 
-    return redirect('order-detail')
+        return redirect('order-detail')
+    else:
+        return redirect('checkout')
