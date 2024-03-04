@@ -14,6 +14,8 @@
         <div class="menu-about">  
             <a href="" class="menu">Menu</a>
         </div>
+
+        <p class = "red">*Dear Customer, Kitchen services are available from 9am to 9pm only.</p>
         {% comment %} <div class="search-food">
         <form>
             <input type="text" value="Search" id="search-btn">
@@ -37,10 +39,12 @@
                         <h4>Rs.{{item.item_price}}</h4>
                     </div>
                 <p>{{item.item_description}}</p>
+                {% if available%}
                 <button data-product="{{item.id}}"
                 data-action="add"
                 class="btn update-cart">Add to cart</button>
                 </div>   
+                {% endif %}
             </div>
             {% endfor %}
         </div>

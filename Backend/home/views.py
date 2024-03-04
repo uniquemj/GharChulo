@@ -4,6 +4,7 @@ from django.db.models import Q
 from menuitem.models import *
 from accounts.models import *
 from .utils import getNearestKitchen
+from datetime import datetime
 # Create your views here.
 
 
@@ -53,8 +54,8 @@ def kitchendashboard(request):
     if not request.user.is_kitchen:
         return redirect('login-page')
     kitchen = Kitchen.objects.get(user = request.user)
-    orderItem = OrderItem.objects.filter(kitchen = kitchen).count()
-    orderPending = OrderItem.objects.filter(kitchen = kitchen, is_completed = False).count()
+    orderItem = OrderItem.objects.filter(kitchen = kitchen, is_canceled = False).count()
+    orderPending = OrderItem.objects.filter(kitchen = kitchen, is_completed = False, is_canceled = False).count()
     orderCompleted = OrderItem.objects.filter(kitchen = kitchen, is_completed = True).count()
     context = {
         'user':kitchen,
@@ -76,11 +77,18 @@ def kitchenDashboardProduct(request):
 def kitchenPage(request, name):
     if not request.user.is_authenticated:
         return render(request,'home/home.html')
+    
+    current_time = datetime.now().time()
+    if current_time < datetime.strptime('09:00', '%H:%M').time() or current_time > datetime.strptime('21:00', '%H:%M').time():
+        available = False
+    else:
+        available = True
     page = "kitchenPage"
     kitchen = Kitchen.objects.get(kitchen_name = name)
     context = {
         'kitchen':kitchen,
-        'page' : page
+        'page' : page,
+        'available': available
     }
     return render(request,'home/kitchen-page.html', context)
 

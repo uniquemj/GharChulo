@@ -70,3 +70,8 @@ table thead{
   padding: 10px;
   border-radius: 10px;
 }
+
+.red{
+  color: #db4050;
+  font-size: 0.8rem;
+}

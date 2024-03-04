@@ -111,7 +111,6 @@
   margin: 5px 0 0 0;
 }
 
-
 .payment-label {
   font-weight: 700;
   width: 150px;
@@ -129,27 +128,27 @@
   border: 2px solid black;
 }
 
-.payment__option-button__choice{
+.payment__option-button__choice {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.payment__option-button__choice form{
+.payment__option-button__choice form {
   width: 50%;
 }
 
-form input[type="submit"]{
+form input[type="submit"] {
   width: 10rem;
   margin: 0.5rem 0.5rem;
 }
 
-form input[type="submit"].btn-khalti{
-  background-color:#5E338D;
+form input[type="submit"].btn-khalti {
+  background-color: #5e338d;
   color: #f5f5f5;
 }
-form input[type="submit"].btn-cod{
-  background-color:#dc2234;
+form input[type="submit"].btn-cod {
+  background-color: #dc2234;
   color: #f5f5f5;
 }
 .payment__option-button__choice {
@@ -157,4 +156,20 @@ form input[type="submit"].btn-cod{
   justify-content: center;
   align-items: center;
   padding: 0;
+}
+
+.time_option {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 1rem 0;
+  gap: 1rem;
+}
+
+.red {
+  color: #dc2234;
+  font-size: 0.8rem;
+}
+
+.time_option select{
+  padding: 0.5rem 0;
 }

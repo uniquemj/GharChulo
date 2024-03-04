@@ -36,6 +36,10 @@ class Order(models.Model):
     order_id =  models.UUIDField( primary_key = True, default = uuid.uuid4, editable = False) 
     payment_method = models.CharField(max_length=20, choices = PAYMENT_CHOICES, default = "Cash on Delivery")
     payment_completed = models.BooleanField(default = False)
+    delivery_date = models.DateField(null=True, blank=True)
+    delivery_time_start = models.TimeField(null = True, blank = True)
+    delivery_time_end = models.TimeField(null = True, blank = True)
+    canceled = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.order_id}'
@@ -50,8 +54,9 @@ class OrderItem(models.Model):
     address = models.CharField(max_length=100, blank=True)
     phone_no = models.CharField(max_length=10, blank=True)
     is_completed = models.BooleanField(default=False)
+    is_canceled = models.BooleanField(default = False)
     order_status = models.CharField(choices=ORDER_STATUS, max_length=20, default='pending')
-    date_ordered = models.DateField(auto_now_add = True)
+    date_ordered = models.DateTimeField(auto_now_add=True)
     payment_method = models.CharField(max_length=20, choices = PAYMENT_CHOICES, default = "Cash on Delivery")
     payment_completed = models.BooleanField(default = False)
    

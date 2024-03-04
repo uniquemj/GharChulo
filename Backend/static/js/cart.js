@@ -28,3 +28,45 @@ function updateUserOrder(productId, action) {
       location.reload()
     });
 }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  var today = new Date();
+  var tomorrow = new Date();
+  tomorrow.setDate(today.getDate() + 1);
+
+  // Format dates as YYYY-MM-DD
+  var todayFormatted = today.toISOString().split('T')[0];
+  var tomorrowFormatted = tomorrow.toISOString().split('T')[0];
+
+  // Set today's and tomorrow's dates as options in the delivery date dropdown
+  document.getElementById('deliveryDate').innerHTML = `
+      <option value="${todayFormatted}">${todayFormatted}</option>
+      <option value="${tomorrowFormatted}">${tomorrowFormatted}</option>
+  `;
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  var timeSelect = document.getElementById('deliveryTime');
+
+  // Define start and end time
+  var startTime = 9; // 9 am
+  var endTime = 21; // 9 pm
+
+  // Generate time options
+  for (var hour = startTime; hour < endTime; hour++) {
+      var startHour = hour < 10 ? '0' + hour : hour; // Add leading zero if hour is single digit
+      var endHour = (hour + 1) < 10 ? '0' + (hour + 1) : (hour + 1); // Add leading zero if hour is single digit
+
+      var optionText = startHour + ':00 - ' + endHour + ':00';
+      var optionValue = startHour + ':00-' + endHour + ':00';
+
+      // Create an option element
+      var option = document.createElement('option');
+      option.value = optionValue;
+      option.textContent = optionText;
+
+      // Append the option to the select element
+      timeSelect.appendChild(option);
+  }
+});

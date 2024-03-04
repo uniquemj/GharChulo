@@ -214,3 +214,8 @@ body {
 .form button:hover{
     cursor: pointer;
 }
+
+.red{
+  color: #dc2234;
+  font-size: 0.8rem;
+}

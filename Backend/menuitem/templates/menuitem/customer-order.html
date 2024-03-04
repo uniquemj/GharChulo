@@ -13,6 +13,7 @@
           <th scope="col">Quanity</th>
           <th scope="col">Price</th>
           <th scope="col">Order status</th>
+          <th></th>
       </thead>
       <tbody>
         <div class = "order-item">
@@ -30,6 +31,21 @@
               {% else %}
               <td><span class = "btn btn-danger">{{item.order_status}}</span></td>
               {% endif %}
+              <td>
+                
+              {% if item.date_ordered >= fifteen_min_ago  %}
+                  <!-- Display cancel button only for orders placed within the last hour -->
+                  <form method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="order_id_to_cancel" value="{{ item.id }}">
+                      <button type="submit">Cancel Order</button>
+                  </form>
+              {% else %}
+                    <!-- Display a message indicating the order cannot be canceled -->
+                  <p class = "red">Cannot cancel this order. The cancellation window has expired.</p>
+              {% endif %}
+                </td>
+
           </tr>
         {%endfor%}
         </div>
