@@ -207,7 +207,12 @@ def checkout(request):
             print(new_res)
                     
 
-            order, created = Order.objects.get_or_create(customer = customer, payment_method = payment_method, delivery_date = delivery_date, delivery_time_start = start_time, delivery_time_end = end_time)
+            order, created = Order.objects.get_or_create(customer = customer)
+            order.payment_method = payment_method
+            order.delivery_date = delivery_date
+            order.delivery_time_start = start_time
+            order.delivery_time_end = end_time
+            order.save()
             for item in items:
                 kitchen = item.added_by
                 orderItem = OrderItem(
@@ -239,7 +244,12 @@ def checkout(request):
         elif payment_method == "Cash on Delivery":
                     print(payment_method)
 
-                    order, created = Order.objects.get_or_create(customer = customer, payment_method = payment_method, delivery_date = delivery_date, delivery_time_start = start_time, delivery_time_end = end_time)
+                    order, created = Order.objects.get_or_create(customer = customer)
+                    order.payment_method = payment_method
+                    order.delivery_date = delivery_date
+                    order.delivery_time_start = start_time
+                    order.delivery_time_end = end_time
+                    order.save()
                     for item in items:
                         kitchen = item.added_by
                         orderItem = OrderItem(
