@@ -15,11 +15,13 @@ def home(request):
     
     if not request.user.is_customer:
         return redirect('login-page')
+    
     lat = request.POST.get('currentLatitude')
     lng = request.POST.get('currentLongitude')
 
     location = request.session.get('location')
     kitchen = []
+    
     if location:
         latitude = location['lat']
         longitude = location['lng']
@@ -40,6 +42,7 @@ def home(request):
                 )
     
     queryset = []
+
     if kitchen:
         queryset = Kitchen.objects.filter(kitchen_name__in = kitchen)
     

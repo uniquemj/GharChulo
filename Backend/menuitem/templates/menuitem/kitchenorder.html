@@ -25,7 +25,8 @@
     <div class="product__container-item__container">
       <div class="product__container-item__container-table">
         <div class="order-product__container-item__contianer-table__title">
-            <h3>Order Date</h3>
+            <h3>Date Ordered</h3>
+            <h3>Delivery time</h3>
             <h3>Name</h3>
             <h3>Qty</h3>
             <h3>Price</h3>
@@ -39,6 +40,7 @@
             {% for item in order%} 
                 <div class="order-item-container">
                     <p>{{item.date_ordered}}</p>
+                    <p>{{item.order.delivery_date}}({{item.order.delivery_time_start}}- {{item.order.delivery_time_end}})</p>
                     <p>{{item.item.item_name}}</p>
                     <p>x{{item.quantity}}</p>
                     <p>Rs{{item.price}}</p>

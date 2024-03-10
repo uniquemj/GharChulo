@@ -38,15 +38,15 @@
                         <h2>{{item.item_name}}</h2>
                         <h4>Rs.{{item.item_price}}</h4>
                     </div>
-                <p>{{item.item_description}}</p>
-                {% if available%}
-                <button data-product="{{item.id}}"
-                data-action="add"
-                class="btn update-cart">Add to cart</button>
+                    <p>{{item.item_description}}</p>
+                    {% if available%}
+                    <button data-product="{{item.id}}"
+                    data-action="add"
+                    class="btn update-cart">Add to cart</button>
                 </div>   
                 {% endif %}
             </div>
             {% endfor %}
         </div>
-    
+    </div>
 {% endblock content %}

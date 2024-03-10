@@ -238,8 +238,9 @@ def checkout(request):
                             order_code = hash_val
                     )
                 qr_code.save()
-                    
-                return redirect(new_res['payment_url'])
+
+            request.session['cart'] = {}        
+            return redirect(new_res['payment_url'])
                 
         elif payment_method == "Cash on Delivery":
                     print(payment_method)
@@ -494,7 +495,6 @@ def verifyKhalti(request):
             customer = request.user.customer
             order = Order.objects.get(customer = customer)
             order.payment_completed = True
-            request.session['cart'] = {}
             order.save()
 
         return redirect('order-detail')

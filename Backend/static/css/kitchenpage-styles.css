@@ -507,3 +507,89 @@ nav {
   color: #DC2234;
   font-size: 1rem;
 }
+
+/*Footer Section*/
+/*footer-logo*/
+footer{
+  background: #F3F3F3;
+  font-family: poppins;
+}
+
+/*Footer Container*/
+.footer-container{
+  display: flex;
+  padding: 40px 0px 89px 115px;
+  margin-right:0%;
+  gap: 35px;  
+  margin-top: 120px;
+}
+
+/*Logo*/
+.footer-logo  {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 18px;
+  
+}
+
+/*Logo Icon*/
+.footer-logo img{
+  width: 28.916px;
+height: 28.916px;
+  
+}
+
+/*Gharchulo ABout*/
+.about{
+  font-size: 11.41px;
+  font-weight: 400;
+  max-width: 294.835px;
+  margin:0%;
+  
+}
+
+/*Footer Headings*/
+.footer-title{
+  font-size: 15.804px;
+font-weight: 600;
+
+}
+
+.explore {
+  padding-top:3.5px;
+  
+  
+}
+.get-help {
+  padding-top:3.5px;
+}
+.customer-service
+{
+  padding-top:3.5px;
+
+}
+
+/*Footer SubHeadings*/
+.footer-container li{
+  list-style: none;
+  font-size: 12.463px;
+  font-weight: 300;
+  padding-top: 0%;
+  padding-bottom:7px;
+ 
+}
+
+
+.social-icons  {
+font-size: 32px;
+display:flex;
+gap: 1rem;
+margin-top: 9px;
+
+
+}
+/*Footer Section ENd*/
+.social-icons a{
+  color:black;
+}
